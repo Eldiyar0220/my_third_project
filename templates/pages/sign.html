@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title_page %}
+    sign
+{% endblock %}
+
+{% block page %}sign-page{% endblock %}
+
+{% block body-class %}sign-body{% endblock %}
+
+{% block style-libs %}{% endblock %}
+
+{% block style %}{% endblock %}
+
+{% block content %}
+
+    <div class="sign sign__flex">
+        <div class="sign__wrap">
+            <div class="sign__inner">
+                <div class="sign__head">
+                    <div class="sign__logo">
+                        <img src="{% static 'img/png/logo.png' %}" alt="">
+                    </div>
+                </div>
+                <h2 class="sign__title">
+                    Войти
+                </h2>
+                <form action="">
+                    <div class="fields">
+{#                        Если E-mail неправильный, добавить класс "error" на fields#}
+{#                        и раскомментировать email__error#}
+                        <label for="sign-email" class="sign__label">
+                            Ваш электронный адрес
+                        </label>
+                        <input required type="text" id="sign-email" class="sign__input"
+                               placeholder="Email или ваша почта">
+{#                        <p class="email__error">#}
+{#                            Email не найден попробуйте снова#}
+{#                        </p>#}
+                    </div>
+                    <div class="fields">
+{#                        Если пароль неправильный, добавить класс "error" на fields#}
+{#                        и раскомментировать forget__password #}
+                        <label for="sign-password" class="sign__label">
+                            Ваш пароль
+                        </label>
+                        <div class="sign__input-wrap">
+                            <input required type="password" id="sign-password" class="sign__input"
+                                   placeholder="Пароль">
+                            <div class="sign__eye"></div>
+                        </div>
+{#                        <div class="forget__password" data-micromodal-trigger="forget-password">#}
+{#                            Забыли пароль?#}
+{#                        </div>#}
+                    </div>
+                    <button type="submit" class="sign__btn">
+                        Войти
+                    </button>
+                </form>
+                <p class="sign__link">
+                    Нет аккаунта? <a href="#">Зарегистрироваться</a>
+                </p>
+            </div>
+        </div>
+        <div class="sign__img">
+            <img src="{% static 'img/png/delivery.png' %}" alt="">
+        </div>
+    </div>
+
+                    {#    модалка забыли пароль  #}
+    <div class="modal micromodal-slide" id="forget-password" aria-hidden="true">
+        <div class="modal__overlay sign__modal-overlay" tabindex="-1" data-micromodal-close>
+            <div class="modal__container" role="dialog" aria-modal="true">
+                <div class="area__modal">
+                    <div class="modal__close" data-micromodal-close></div>
+                    <h2 class="modal__title">
+                        Введите ваш используемый
+                        Email
+                    </h2>
+                    <p class="modal__subtitle">
+                        На ваш email будет отправлено письмо
+                        с ссылкой для смены пароля
+                    </p>
+                    <form action="">
+                        <div class="fields error">
+                            <label for="sign-email" class="sign__label">
+                                Текущий Email
+                            </label>
+                            <input required type="text" id="sign-email" class="sign__input"
+                                   placeholder="Primer@gmail.com">
+                            <p class="email__error">
+                                Email не совпадает
+                            </p>
+                        </div>
+                        <button type="submit" class="personal__btn modal__btn">
+                            Отправить
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}

@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title_page %}{% endblock %}
+
+{% block style-libs %}{% endblock %}
+
+{% block style %}{% endblock %}
+
+{% block content %}
+
+    <div class="gray__body">
+        <div class="container">
+            <div class="faq__wrap">
+                {% include 'components/faq-sidebar/faq-sidebar.html' %}
+                <div class="faq__main">
+                    <div class="about__us-content">
+                        <h3 class="about__title">
+                            Как это устроено?
+                            Процесс нашей Работы
+                        </h3>
+                        <p class="faq__text">
+                            Основана Джеффом Безосом 5 июля 1994 года как интернет-магазин по продаже книг, но позже
+                            диверсифицировалась, начав продавать видео, MP3, аудиокниги (как потоковым способом, так и
+                            через возможность загрузки), программное обеспечение, видеоигры, электронику, одежду,
+                            мебель, еду, игрушки и ювелирные изделия. Компания также владеет издательским подразделением
+                            Amazon Publishing, киностудией Amazon Studios, производит линии бытовой электроники, включая
+                            электронные ридеры Kindle, планшеты Amazon Fire[en], Fire TV[en] и смарт-динамик Echo, и
+                            является крупнейшим в мире поставщиком услуг в моделях IaaS и PaaS (Amazon Web Services)[9].
+                        </p>
+                        <div class="faq__slider">
+                            <div class="swiper-container faq__swiper-container">
+                                <div class="swiper-wrapper faq__swiper-wrapper">
+                                    <div class="swiper-slide faq__swiper-slide">
+                                        <img src="{% static 'img/png/delivery.png' %}" alt="">
+                                    </div>
+                                    <div class="swiper-slide faq__swiper-slide">
+                                        <img src="{% static 'img/png/delivery.png' %}" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-button-next faq__swiper-next faq__swiper-arrow">
+                                <svg width="14" height="8" viewBox="0 0 14 8" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M0.939375 3.33334L11.5975 3.33334L9.60173 1.13805C9.36504 0.877735 9.36504 0.455601 9.60173 0.195245C9.72008 0.0651112 9.87519 0 10.0303 0C10.1854 0 10.3405 0.0651112 10.4588 0.195289L13.4891 3.52863C13.7258 3.78894 13.7258 4.21107 13.4891 4.47143L10.4588 7.80477C10.2222 8.06508 9.83842 8.06508 9.60173 7.80477C9.36504 7.54445 9.36504 7.12232 9.60173 6.86196L11.5975 4.66667L0.939375 4.66667C0.604667 4.66667 0.333313 4.36818 0.333313 4.00001C0.333313 3.63183 0.604667 3.33334 0.939375 3.33334Z"
+                                          fill="#003CAA"/>
+                                </svg>
+                            </div>
+                            <div class="swiper-button-prev faq__swiper-prev faq__swiper-arrow">
+                                <svg width="14" height="8" viewBox="0 0 14 8" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M13.0606 4.66666H2.40253L4.39825 6.86195C4.63494 7.12227 4.63494 7.5444 4.39825 7.80476C4.27991 7.93489 4.1248 8 3.96969 8C3.81458 8 3.65946 7.93489 3.54116 7.80471L0.510854 4.47137C0.274166 4.21106 0.274166 3.78893 0.510854 3.52857L3.54116 0.195234C3.77781 -0.0650779 4.16157 -0.0650779 4.39825 0.195234C4.63494 0.455545 4.63494 0.877679 4.39825 1.13804L2.40253 3.33333H13.0606C13.3953 3.33333 13.6667 3.63182 13.6667 3.99999C13.6667 4.36817 13.3953 4.66666 13.0606 4.66666Z"
+                                          fill="#003CAA"/>
+                                </svg>
+                            </div>
+                            <div class="swiper-pagination faq__swiper-pagination"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        var swiper = new Swiper('.faq__swiper-container', {
+            pagination: {
+                el: '.faq__swiper-pagination',
+                clickable: true,
+            },
+            loop: true,
+            navigation: {
+                nextEl: '.faq__swiper-next',
+                prevEl: '.faq__swiper-prev',
+            },
+            spaceBetween: 20
+        });
+    </script>
+{% endblock %}

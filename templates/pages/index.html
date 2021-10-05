@@ -1,0 +1,753 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title_page %}{% endblock %}
+
+{% block style-libs %}{% endblock %}
+
+{% block style %}{% endblock %}
+
+{% block content %}
+    <section class="intro">
+        <div class="intro__slider">
+            <div class="swiper-container intro__swiper-container">
+                <div class="swiper-wrapper intro__swiper-wrapper">
+                    <div class="swiper-slide intro__swiper-slide">
+                        <div class="slide__inner">
+                            <div class="slide__img">
+                                <img src="{% static 'img/icon/intro-pic.svg' %}"
+                                     alt="" class="slide__pic">
+                            </div>
+                            <div class="slide__content">
+                                <h2 class="slide__title">
+                                    Доставляем прямо
+                                    до двери с самого Китая
+                                </h2>
+                                <p class="slide__text">
+                                    Начните экономить с нами заказывая самые
+                                    интересные
+                                    и лучшие товары с зарубежных сайтов и мы
+                                    доставим вам
+                                    их в миг!
+                                </p>
+                                <div class="slide__btn-wrap">
+                                    <a href="#" class="slide__btn">
+                                        Получить адрес
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide intro__swiper-slide">
+                        <div class="slide__inner">
+                            <div class="slide__img">
+                                <img src="{% static 'img/png/edit-profile.png' %}"
+                                     alt="" class="slide__pic">
+                            </div>
+                            <div class="slide__content">
+                                <h2 class="slide__title">
+                                    Доставляем прямо
+                                    до двери с самого Китая
+                                </h2>
+                                <p class="slide__text">
+                                    Начните экономить с нами заказывая самые
+                                    интересные
+                                    и лучшие товары с зарубежных сайтов и мы
+                                    доставим вам
+                                    их в миг!
+                                </p>
+                                <div class="slide__btn-wrap">
+                                    <a href="#" class="slide__btn">
+                                        Получить адрес
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide intro__swiper-slide">
+                        <div class="slide__inner">
+                            <div class="slide__img">
+                                <img src="{% static 'img/icon/intro-pic.svg' %}"
+                                     alt="" class="slide__pic">
+                            </div>
+                            <div class="slide__content">
+                                <h2 class="slide__title">
+                                    Доставляем прямо
+                                    до двери с самого Китая
+                                </h2>
+                                <p class="slide__text">
+                                    Начните экономить с нами заказывая самые
+                                    интересные
+                                    и лучшие товары с зарубежных сайтов и мы
+                                    доставим вам
+                                    их в миг!
+                                </p>
+                                <div class="slide__btn-wrap">
+                                    <a href="#" class="slide__btn">
+                                        Получить адрес
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-button-next intro__swiper-next intro__swiper-arrow"
+                 data-aos="fade-right" data-aos-duration="700">
+                <svg width="20" height="12" viewBox="0 0 20 12" fill="none"
+                     xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0.909092 5.00001L16.8962 5.00001L13.9026 1.70707C13.5476 1.3166 13.5476 0.683401 13.9026 0.292867C14.0801 0.0976667 14.3128 0 14.5455 0C14.7781 0 15.0108 0.0976658 15.1883 0.292933L19.7337 5.29294C20.0888 5.68341 20.0888 6.31661 19.7337 6.70714L15.1883 11.7071C14.8333 12.0976 14.2577 12.0976 13.9026 11.7071C13.5476 11.3167 13.5476 10.6835 13.9026 10.2929L16.8962 7.00001L0.909092 7.00001C0.407031 7.00001 0 6.55228 0 6.00001C0 5.44774 0.407031 5.00001 0.909092 5.00001Z"
+                          fill="#003CAA"/>
+                </svg>
+            </div>
+            <div class="swiper-button-prev intro__swiper-prev intro__swiper-arrow"
+                 data-aos="fade-left" data-aos-duration="700">
+                <svg width="20" height="12" viewBox="0 0 20 12" fill="none"
+                     xmlns="http://www.w3.org/2000/svg">
+                    <path d="M19.0909 6.99999H3.10379L6.09737 10.2929C6.4524 10.6834 6.4524 11.3166 6.09737 11.7071C5.91986 11.9023 5.68719 12 5.45452 12C5.22186 12 4.98919 11.9023 4.81173 11.7071L0.266273 6.70706C-0.0887585 6.31659 -0.0887585 5.68339 0.266273 5.29286L4.81173 0.29285C5.1667 -0.0976168 5.74234 -0.0976168 6.09737 0.29285C6.4524 0.683318 6.4524 1.31652 6.09737 1.70705L3.10379 4.99999H19.0909C19.593 4.99999 20 5.44772 20 5.99999C20 6.55226 19.593 6.99999 19.0909 6.99999Z"
+                          fill="#003CAA"/>
+                </svg>
+            </div>
+            <div class="swiper-pagination intro__swiper-pagination"></div>
+        </div>
+    </section>
+
+    <section class="work__process">
+        <div class="swiper-container process__swiper-container">
+            <div class="swiper-wrapper process__swiper-wrapper">
+                <div class="swiper-slide process__swiper-slide">
+                    <div class="process__swiper-inner">
+                        <div class="process__content">
+                            <div class="slide__title" data-aos="fade-right"
+                                 data-aos-duration="700">
+                                    <span class="slide__title-main">
+                                        Процесс нашей работы
+                                    </span>
+                                <span class="slide__title-minor">
+                                        Процесс нашей работы
+                                    </span>
+                            </div>
+                            <h3 class="content__title" data-aos="fade-right"
+                                data-aos-duration="700" data-aos-delay="100">
+                                Выбирай товары в любых
+                                зарубежных магазинах!
+                            </h3>
+                            <p class="slide__text" data-aos="fade-right"
+                               data-aos-duration="700" data-aos-delay="200">
+                                Наши склады находятся в России, Китае, Европе,
+                                Корее и даже в США. Покупайте товары
+                                лучших и модных брендов с нами, ведь с нами
+                                дешевле
+                            </p>
+                            <a href="#" class="slide__btn" data-aos="fade-right"
+                               data-aos-duration="700" data-aos-delay="300">
+                                Зарегестрироваться
+                            </a>
+                        </div>
+                        <div class="process__img">
+                            <img src="{% static 'img/png/process-pic1.png' %}"
+                                 alt="" class="process__pic">
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide process__swiper-slide">
+                    <div class="process__swiper-inner">
+                        <div class="process__content">
+                            <div class="slide__title">
+                                    <span class="slide__title-main">
+                                        Процесс нашей работы
+                                    </span>
+                                <span class="slide__title-minor">
+                                        Процесс нашей работы
+                                    </span>
+                            </div>
+                            <h3 class="content__title">
+                                Выбирай товары в любых
+                                зарубежных магазинах!
+                            </h3>
+                            <p class="slide__text">
+                                Наши склады находятся в России, Китае, Европе,
+                                Корее и даже в США. Покупайте товары
+                                лучших и модных брендов с нами, ведь с нами
+                                дешевле
+                            </p>
+                            <a href="#" class="slide__btn">
+                                Зарегестрироваться
+                            </a>
+                        </div>
+                        <div class="process__img">
+                            <img src="{% static 'img/png/process-pic2.png' %}"
+                                 alt="" class="process__pic">
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide process__swiper-slide">
+                    <div class="process__swiper-inner">
+                        <div class="process__content">
+                            <div class="slide__title">
+                                    <span class="slide__title-main">
+                                        Процесс нашей работы
+                                    </span>
+                                <span class="slide__title-minor">
+                                        Процесс нашей работы
+                                    </span>
+                            </div>
+                            <h3 class="content__title">
+                                Выбирай товары в любых
+                                зарубежных магазинах!
+                            </h3>
+                            <p class="slide__text">
+                                Наши склады находятся в России, Китае, Европе,
+                                Корее и даже в США. Покупайте товары
+                                лучших и модных брендов с нами, ведь с нами
+                                дешевле
+                            </p>
+                            <a href="#" class="slide__btn">
+                                Зарегестрироваться
+                            </a>
+                        </div>
+                        <div class="process__img">
+                            <img src="{% static 'img/png/process-pic3.png' %}"
+                                 alt="" class="process__pic">
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide process__swiper-slide">
+                    <div class="process__swiper-inner">
+                        <div class="process__content">
+                            <div class="slide__title">
+                                    <span class="slide__title-main">
+                                        Процесс нашей работы
+                                    </span>
+                                <span class="slide__title-minor">
+                                        Процесс нашей работы
+                                    </span>
+                            </div>
+                            <h3 class="content__title">
+                                Выбирай товары в любых
+                                зарубежных магазинах!
+                            </h3>
+                            <p class="slide__text">
+                                Наши склады находятся в России, Китае, Европе,
+                                Корее и даже в США. Покупайте товары
+                                лучших и модных брендов с нами, ведь с нами
+                                дешевле
+                            </p>
+                            <a href="#" class="slide__btn">
+                                Зарегестрироваться
+                            </a>
+                        </div>
+                        <div class="process__img">
+                            <img src="{% static 'img/png/process-pic4.png' %}"
+                                 alt="" class="process__pic">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-pagination process__swiper-pagination"></div>
+    </section>
+
+    <section class="pride">
+        <div class="container">
+            <h2 class="pride__title">
+                Чем мы гордимся?
+            </h2>
+            <div class="pride__flex">
+                <div class="pride__flex-item" data-aos-delay="100"
+                     data-aos="fade-right" data-aos-duration="700">
+                    <span class="pride__item-num">
+                        +10
+                    </span>
+                    <p class="pride__text">
+                        Килограмм посылок мы доставили с помощью
+                        поездов, самолетов, кораблей во время
+                    </p>
+                </div>
+                <div class="pride__flex-item" data-aos-delay="200"
+                     data-aos="fade-right" data-aos-duration="700">
+                    <span class="pride__item-num">
+                        20 000
+                    </span>
+                    <p class="pride__text">
+                        Килограмм посылок мы доставили с помощью
+                        поездов, самолетов, кораблей во время
+                    </p>
+                </div>
+                <div class="pride__flex-item" data-aos-delay="300"
+                     data-aos="fade-right" data-aos-duration="700">
+                    <span class="pride__item-num">
+                        +964
+                    </span>
+                    <p class="pride__text">
+                        Стольким людям мы помогли доставить посылки
+                        вовремя с заботой и любовью
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="we">
+        <div class="container">
+            <h2 class="we__title">
+                Почему мы?
+            </h2>
+            <div class="we__grid">
+                <div class="we__grid-item" data-aos="fade-up"
+                     data-aos-duration="700">
+                    <div class="we__icon-wrap">
+                        <img src="{% static 'img/icon/clock.svg' %}"
+                             class="we__icon"/>
+                    </div>
+                    <p class="we__text">
+                        Экспресс склады
+                        в Европе,США, Турции, Китае
+                        и даже в Корее
+                    </p>
+                </div>
+                <div class="we__grid-item" data-aos="fade-up"
+                     data-aos-duration="700" data-aos-delay="100">
+                    <div class="we__icon-wrap">
+                        <img src="{% static 'img/icon/computer.svg' %}"
+                             class="we__icon"/>
+                    </div>
+                    <p class="we__text">
+                        Личный кабинет
+                        с отслеживанием товара
+                    </p>
+                </div>
+                <div class="we__grid-item" data-aos="fade-up"
+                     data-aos-duration="700" data-aos-delay="200">
+                    <div class="we__icon-wrap">
+                        <img src="{% static 'img/icon/purse.svg' %}"
+                             class="we__icon"/>
+                    </div>
+                    <p class="we__text">
+                        Доступные цены - для ваших
+                        заказов
+                    </p>
+                </div>
+            </div>
+            <div class="we__btn-wrap">
+                <a href="#" class="we__btn">
+                    Получить адрес!
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="employee">
+        <div class="container">
+            <h2 class="employee__title">
+                Мы сотрудничаем
+                с лучшими интернет магазинами
+            </h2>
+            <p class="employee__subtitle">
+                Наши партнеры
+            </p>
+            <div class="employee__slider">
+                <div class="swiper-container employee__swiper-container">
+                    <div class="swiper-wrapper employee__swiper-wrapper">
+                        <div class="swiper-slide employee__swiper-slide">
+                            <img src="{% static 'img/png/amazon.png' %}" alt=""
+                                 class="employee__img">
+                        </div>
+                        <div class="swiper-slide employee__swiper-slide">
+                            <img src="{% static 'img/png/amazon.png' %}" alt=""
+                                 class="employee__img">
+                        </div>
+                        <div class="swiper-slide employee__swiper-slide">
+                            <img src="{% static 'img/png/amazon.png' %}" alt=""
+                                 class="employee__img">
+                        </div>
+                        <div class="swiper-slide employee__swiper-slide">
+                            <img src="{% static 'img/png/amazon.png' %}" alt=""
+                                 class="employee__img">
+                        </div>
+                        <div class="swiper-slide employee__swiper-slide">
+                            <img src="{% static 'img/png/amazon.png' %}" alt=""
+                                 class="employee__img">
+                        </div>
+                        <div class="swiper-slide employee__swiper-slide">
+                            <img src="{% static 'img/png/amazon.png' %}" alt=""
+                                 class="employee__img">
+                        </div>
+                        <div class="swiper-slide employee__swiper-slide">
+                            <img src="{% static 'img/png/amazon.png' %}" alt=""
+                                 class="employee__img">
+                        </div>
+                        <div class="swiper-slide employee__swiper-slide">
+                            <img src="{% static 'img/png/amazon.png' %}" alt=""
+                                 class="employee__img">
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-button-next employee__swiper-next employee__swiper-arrow"
+                     data-aos="fade-right" data-aos-duration="700">
+                    <svg width="25" height="16" viewBox="0 0 25 16" fill="none"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path d="M24.7071 7.29289C25.0976 7.68342 25.0976 8.31658 24.7071 8.70711L18.3431 15.0711C17.9526 15.4616 17.3195 15.4616 16.9289 15.0711C16.5384 14.6805 16.5384 14.0474 16.9289 13.6569L22.5858 8L16.9289 2.34315C16.5384 1.95262 16.5384 1.31946 16.9289 0.928932C17.3195 0.538408 17.9526 0.538408 18.3431 0.928932L24.7071 7.29289ZM0 7L24 7V9L0 9L0 7Z"
+                              fill="#003CAA"/>
+                    </svg>
+                </div>
+                <div class="swiper-button-prev employee__swiper-prev employee__swiper-arrow"
+                     data-aos="fade-left" data-aos-duration="700">
+                    <svg width="25" height="16" viewBox="0 0 25 16" fill="none"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0.292892 8.70711C-0.0976315 8.31658 -0.0976315 7.68342 0.292892 7.29289L6.65685 0.928932C7.04738 0.538408 7.68054 0.538408 8.07107 0.928932C8.46159 1.31946 8.46159 1.95262 8.07107 2.34315L2.41421 8L8.07107 13.6569C8.46159 14.0474 8.46159 14.6805 8.07107 15.0711C7.68054 15.4616 7.04738 15.4616 6.65685 15.0711L0.292892 8.70711ZM25 9H1V7H25V9Z"
+                              fill="#003CAA"/>
+                    </svg>
+                </div>
+                <div class="swiper-pagination employee__swiper-pagination"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="news">
+        <div class="container">
+            <div class="news__head">
+                <h2 class="news__title">
+                    Новости
+                </h2>
+                <a href="#" class="more__news">
+                    Еще больше новостей
+                </a>
+            </div>
+            <div class="news__grid">
+                <div class="news__item">
+                    <div class="news__img">
+                        <img src="{% static 'img/png/news.png' %}" alt="">
+                    </div>
+                    <div class="news__content">
+                        <div class="news__date">
+                            22.05.2020 18:36
+                        </div>
+                        <h4 class="news__item-ttl">
+                            Evegreen или “Ты не пройдешь!”. Как это повлияло на
+                            мир
+                        </h4>
+                    </div>
+                </div>
+                <div class="news__item">
+                    <div class="news__img">
+                        <img src="{% static 'img/png/news.png' %}" alt="">
+                    </div>
+                    <div class="news__content">
+                        <div class="news__date">
+                            22.05.2020 18:36
+                        </div>
+                        <h4 class="news__item-ttl">
+                            Evegreen или “Ты не пройдешь!”. Как это повлияло на
+                            мир
+                        </h4>
+                    </div>
+                </div>
+                <div class="news__item">
+                    <div class="news__img">
+                        <img src="{% static 'img/png/news.png' %}" alt="">
+                    </div>
+                    <div class="news__content">
+                        <div class="news__date">
+                            22.05.2020 18:36
+                        </div>
+                        <h4 class="news__item-ttl">
+                            Evegreen или “Ты не пройдешь!”. Как это повлияло на
+                            мир
+                        </h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="delivery">
+        <div class="container">
+            <h5 class="delivery__toptitle">
+                Мы доставляем всегда вовремя!
+            </h5>
+            <h2 class="delivery__title">
+                Где находяться наши склады
+                и куда заказывать?
+            </h2>
+            <div class="delivery__pagination"></div>
+            <div class="delivery__slider">
+                <div class="swiper-container delivery__swiper-container">
+                    <div class="swiper-wrapper delivery__swiper-wrapper">
+                        <div class="swiper-slide delivery__swiper-slide">
+                            <div class="delivery__slide-inner">
+                                <div class="delivery__img">
+                                    <img src="{% static 'img/png/delivery.png' %}"
+                                         alt="">
+                                </div>
+                                <div class="delivery__content">
+                                    <h5 class="delivery__slide-ttl">
+                                        Пекин
+                                    </h5>
+                                    <div class="delivery__info">
+                                        <div class="info__item">
+                                        <span class="info__name">
+                                            Адрес:
+                                        </span>
+                                            <span class="info__value">
+                                            645 West 1st Avenue
+                                        </span>
+                                        </div>
+                                        <div class="info__item">
+                                        <span class="info__name">
+                                            Получатель:
+                                        </span>
+                                            <span class="info__value">
+                                            Family Pelican Express UKG0005
+                                        </span>
+                                        </div>
+                                        <div class="info__item">
+                                        <span class="info__name">
+                                            Город:
+                                        </span>
+                                            <span class="info__value">
+                                            Roselle
+                                        </span>
+                                        </div>
+                                        <div class="info__item">
+                                        <span class="info__name">
+                                            Штат:
+                                        </span>
+                                            <span class="info__value">
+                                            NJ  (New Jersey)
+                                        </span>
+                                        </div>
+                                        <div class="info__item">
+                                        <span class="info__name">
+                                            Почтовый код:
+                                        </span>
+                                            <span class="info__value">
+                                            07203
+                                        </span>
+                                        </div>
+                                        <div class="info__item">
+                                        <span class="info__name">
+                                            Телефон
+                                        </span>
+                                            <span class="info__value">
+                                            +996 774 102 811
+                                        </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide delivery__swiper-slide">
+                            <div class="delivery__slide-inner">
+                                <div class="delivery__img">
+                                    <img src="{% static 'img/png/delivery.png' %}"
+                                         alt="">
+                                </div>
+                                <div class="delivery__content">
+                                    <h5 class="delivery__slide-ttl">
+                                        Пекин
+                                    </h5>
+                                    <div class="delivery__info">
+                                        <div class="info__item">
+                                        <span class="info__name">
+                                            Адрес:
+                                        </span>
+                                            <span class="info__value">
+                                            645 West 1st Avenue
+                                        </span>
+                                        </div>
+                                        <div class="info__item">
+                                        <span class="info__name">
+                                            Получатель:
+                                        </span>
+                                            <span class="info__value">
+                                            Family Pelican Express UKG0005
+                                        </span>
+                                        </div>
+                                        <div class="info__item">
+                                        <span class="info__name">
+                                            Город:
+                                        </span>
+                                            <span class="info__value">
+                                            Roselle
+                                        </span>
+                                        </div>
+                                        <div class="info__item">
+                                        <span class="info__name">
+                                            Штат:
+                                        </span>
+                                            <span class="info__value">
+                                            NJ  (New Jersey)
+                                        </span>
+                                        </div>
+                                        <div class="info__item">
+                                        <span class="info__name">
+                                            Почтовый код:
+                                        </span>
+                                            <span class="info__value">
+                                            07203
+                                        </span>
+                                        </div>
+                                        <div class="info__item">
+                                        <span class="info__name">
+                                            Телефон
+                                        </span>
+                                            <span class="info__value">
+                                            +996 774 102 811
+                                        </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide delivery__swiper-slide">
+                            <div class="delivery__slide-inner">
+                                <div class="delivery__img">
+                                    <img src="{% static 'img/png/delivery.png' %}"
+                                         alt="">
+                                </div>
+                                <div class="delivery__content">
+                                    <h5 class="delivery__slide-ttl">
+                                        Пекин
+                                    </h5>
+                                    <div class="delivery__info">
+                                        <div class="info__item">
+                                        <span class="info__name">
+                                            Адрес:
+                                        </span>
+                                            <span class="info__value">
+                                            645 West 1st Avenue
+                                        </span>
+                                        </div>
+                                        <div class="info__item">
+                                        <span class="info__name">
+                                            Получатель:
+                                        </span>
+                                            <span class="info__value">
+                                            Family Pelican Express UKG0005
+                                        </span>
+                                        </div>
+                                        <div class="info__item">
+                                        <span class="info__name">
+                                            Город:
+                                        </span>
+                                            <span class="info__value">
+                                            Roselle
+                                        </span>
+                                        </div>
+                                        <div class="info__item">
+                                        <span class="info__name">
+                                            Штат:
+                                        </span>
+                                            <span class="info__value">
+                                            NJ  (New Jersey)
+                                        </span>
+                                        </div>
+                                        <div class="info__item">
+                                        <span class="info__name">
+                                            Почтовый код:
+                                        </span>
+                                            <span class="info__value">
+                                            07203
+                                        </span>
+                                        </div>
+                                        <div class="info__item">
+                                        <span class="info__name">
+                                            Телефон
+                                        </span>
+                                            <span class="info__value">
+                                            +996 774 102 811
+                                        </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide delivery__swiper-slide">
+                            <div class="delivery__slide-inner">
+                                <div class="delivery__img">
+                                    <img src="{% static 'img/png/delivery.png' %}"
+                                         alt="">
+                                </div>
+                                <div class="delivery__content">
+                                    <h5 class="delivery__slide-ttl">
+                                        Пекин
+                                    </h5>
+                                    <div class="delivery__info">
+                                        <div class="info__item">
+                                        <span class="info__name">
+                                            Адрес:
+                                        </span>
+                                            <span class="info__value">
+                                            645 West 1st Avenue
+                                        </span>
+                                        </div>
+                                        <div class="info__item">
+                                        <span class="info__name">
+                                            Получатель:
+                                        </span>
+                                            <span class="info__value">
+                                            Family Pelican Express UKG0005
+                                        </span>
+                                        </div>
+                                        <div class="info__item">
+                                        <span class="info__name">
+                                            Город:
+                                        </span>
+                                            <span class="info__value">
+                                            Roselle
+                                        </span>
+                                        </div>
+                                        <div class="info__item">
+                                        <span class="info__name">
+                                            Штат:
+                                        </span>
+                                            <span class="info__value">
+                                            NJ  (New Jersey)
+                                        </span>
+                                        </div>
+                                        <div class="info__item">
+                                        <span class="info__name">
+                                            Почтовый код:
+                                        </span>
+                                            <span class="info__value">
+                                            07203
+                                        </span>
+                                        </div>
+                                        <div class="info__item">
+                                        <span class="info__name">
+                                            Телефон
+                                        </span>
+                                            <span class="info__value">
+                                            +996 774 102 811
+                                        </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div data-aos="fade-right" data-aos-duration="700"
+                     class="swiper-button-next delivery__swiper-next delivery__swiper-arrow">
+                    <svg width="20" height="12" viewBox="0 0 20 12" fill="none"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0.909092 5.00001L16.8962 5.00001L13.9026 1.70707C13.5476 1.3166 13.5476 0.683401 13.9026 0.292867C14.0801 0.0976667 14.3128 0 14.5455 0C14.7781 0 15.0108 0.0976658 15.1883 0.292933L19.7337 5.29294C20.0888 5.68341 20.0888 6.31661 19.7337 6.70714L15.1883 11.7071C14.8333 12.0976 14.2577 12.0976 13.9026 11.7071C13.5476 11.3167 13.5476 10.6835 13.9026 10.2929L16.8962 7.00001L0.909092 7.00001C0.407031 7.00001 0 6.55228 0 6.00001C0 5.44774 0.407031 5.00001 0.909092 5.00001Z"
+                              fill="#003CAA"/>
+                    </svg>
+                </div>
+                <div data-aos="fade-left" data-aos-duration="700"
+                     class="swiper-button-prev delivery__swiper-prev delivery__swiper-arrow">
+                    <svg width="20" height="12" viewBox="0 0 20 12" fill="none"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19.0909 6.99999H3.10379L6.09737 10.2929C6.4524 10.6834 6.4524 11.3166 6.09737 11.7071C5.91986 11.9023 5.68719 12 5.45452 12C5.22186 12 4.98919 11.9023 4.81173 11.7071L0.266273 6.70706C-0.0887585 6.31659 -0.0887585 5.68339 0.266273 5.29286L4.81173 0.29285C5.1667 -0.0976168 5.74234 -0.0976168 6.09737 0.29285C6.4524 0.683318 6.4524 1.31652 6.09737 1.70705L3.10379 4.99999H19.0909C19.593 4.99999 20 5.44772 20 5.99999C20 6.55226 19.593 6.99999 19.0909 6.99999Z"
+                              fill="#003CAA"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
+
+{% block scripts %}{% endblock %}

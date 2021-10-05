@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    {#  Seo  #}
+    <meta name="keywords" content="{% block SEO-keywords %}{% endblock %}"/>
+    <meta name="description" content="{% block SEO-description %}{% endblock %}"/>
+    <meta name="copyright" content="">
+    <meta name="language" content="RU">
+    <meta name="robots" content=""/>
+    <meta name="author" content="">
+    <meta name="reply-to" content="">
+    <meta name="owner" content="">
+    <meta name="url" content="http://www.site.kg/">
+    <meta name="identifier-URL" content="http://site.kg//">
+    {#  OpenGraph  #}
+    <meta name="og:title" content="{% block OG-title %} {% endblock %}"/>
+    <meta name="og:url" content="{% block OG-url %} {% endblock %}"/>
+    <meta name="og:image" content="{% block OG-image %} {% endblock %}"/>
+    <meta name="og:description" content="{% block OG-description %} {% endblock %}"/>
+    {#  TitlePage  #}
+    <title>{% block title_page %}{% endblock %}</title>
+    {#  FaviconSite  #}
+    <link rel="icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}">
+    {#  Fonts  #}
+    <link rel="stylesheet" href="{% static 'fonts/inter/stylesheet.css' %}">
+    {#  StyleLibs  #}
+    {% block style-libs %}{% endblock %}
+    {#  Style  #}
+    <link rel="stylesheet" href="{% static 'css/aos.css' %}">
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'css/swiper.css' %}">
+    <link rel="stylesheet" href="{% static 'js/micromodaljs/micromodal.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {#  CustomStyle  #}
+    {% block style %}{% endblock %}
+    <script src="{% static 'js/jquery-2.2.4.js' %}"></script>
+    <script src="{% static 'js/micromodaljs/micromodal.min.js' %}"></script>
+</head>
+
+<body class="{% block body-class %}{% endblock %}">
+
+{% include 'spriteSVG/sprite.html' %}
+
+<div class="page {% block page %}{% endblock %}">
+    {% block header %}
+        {% include 'partials/header/header.html' %}
+    {% endblock %}
+
+    <main class="{% block main-class %}{% endblock %}">
+
+        {% block content %}{% endblock %}
+
+    </main>
+
+    {% block footer %}
+        {% include 'partials/footer/footer.html' %}
+    {% endblock %}
+
+</div>
+<script src="{% static 'js/swiper.js' %}"></script>
+<script src="{% static 'js/aos.js' %}"></script>
+<script src="{% static 'js/header-settings.js' %}"></script>
+<script src="{% static 'js/carousel-settings.js' %}"></script>
+<script src="{% static 'js/accordion-settings.js' %}"></script>
+<script src="{% static 'js/modal-settings.js' %}"></script>
+
+{% block scripts %}{% endblock %}
+
+</body>
+
+</html>

@@ -1,0 +1,175 @@
+{% extends 'base.html' %}
+{% load static webp_converter %}
+
+{% block title_page %}example{% endblock %}
+
+{% block style-libs %}{% endblock %}
+
+{% block style %}
+    <style>
+        body {
+            padding: 100px 0;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 20px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            grid-gap: 20px;
+            align-self: flex-start;
+        }
+
+        .img-wrapper {
+            height: 200px;
+            background-color: #ccc;
+            border: 1px solid #eee;
+        }
+
+        .img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .cover {
+            object-fit: cover;
+        }
+
+        .contain {
+            object-fit: contain;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="grid-2">
+            {# --- example image --- #}
+            <div class="grid-2">
+                <div class="item">
+                    <span>cover</span>
+                    <div class="img-wrapper">
+                        <img class="img cover" src="{% static_webp 'img/jpg/868-536x354.jpg ' 100 %}" alt="">
+                    </div>
+                </div>
+                <div class="item">
+                    <span>contain</span>
+                    <div class="img-wrapper">
+                        <img class="img contain" src="{% static_webp 'img/jpg/868-536x354.jpg ' 100 %}" alt="">
+                    </div>
+                </div>
+            </div>
+            {# --- btn --- #}
+            <div class="grid">
+                <div class="item">
+                    <button class="btn btn-default">default btn</button>
+                </div>
+                <div class="item">
+                    <a href="" class="btn btn-danger">danger btn</a>
+                </div>
+                <div class="item">
+                    <button type="submit" class="btn btn-success">success btn</button>
+                </div>
+                <div class="item">
+                    <button type="button" class="btn btn-outline">outline btn</button>
+                </div>
+                <div class="item">
+                    <div class="btn btn-link">link btn</div>
+                </div>
+            </div>
+            <div>
+                <div class="item mt-mb-10">
+                    <button class="btn btn-default">default btn</button>
+                </div>
+                <div class="item mt-mb-10">
+                    <a href="" class="btn btn-danger">danger btn</a>
+                </div>
+                <div class="item mt-mb-10">
+                    <button type="submit" class="btn btn-success">success btn</button>
+                </div>
+                <div class="item mt-mb-10">
+                    <button type="button" class="btn btn-outline">outline btn</button>
+                </div>
+                <div class="item mt-mb-10">
+                    <div class="btn btn-link">link btn</div>
+                </div>
+            </div>
+            {# --- form input select textarea checkbox radio --- #}
+            <form action="">
+                <div class="form-control">
+                    <label>input</label>
+                    <input type="text" placeholder="example">
+                </div>
+                <div class="form-control form-control-error">
+                    <label>input error</label>
+                    <input type="text" placeholder="example">
+                    <span class="form-control-error">Error msg</span>
+                </div>
+
+                <div class="form-control">
+                    <label>textarea</label>
+                    <textarea rows="4" placeholder="example"></textarea>
+                </div>
+                <div class="form-control">
+                    <label>Select</label>
+                    <select type="text" placeholder="example">
+                        <option value="">1</option>
+                        <option value="">1</option>
+                        <option value="">1</option>
+                        <option value="">1</option>
+                        <option value="">1</option>
+                        <option value="">1</option>
+                    </select>
+                </div>
+                <div class="form-control">
+                    <label for="id">
+                        <input id="id" type="checkbox">
+                        <span class="custom-checkbox"></span>
+                        <span class="form-control-value">checkbox</span>
+                    </label>
+                </div>
+                <div class="form-control">
+                    <label for="id-disabled" disabled>
+                        <input id="id-disabled" type="checkbox">
+                        <span class="custom-checkbox"></span>
+                        <span class="form-control-value">checkbox disabled </span>
+                    </label>
+                </div>
+                <div class="form-control">
+                    <label for="id-2">
+                        <input id="id-2" type="radio" name="radio">
+                        <span class="custom-radio"></span>
+                        <span class="form-control-value">radio</span>
+                    </label>
+                </div>
+                <div class="form-control">
+                    <label for="id-3">
+                        <input id="id-3" type="radio" name="radio">
+                        <span class="custom-radio"></span>
+                        <span class="form-control-value">radio</span>
+                    </label>
+                </div>
+                <div class="form-control">
+                    <label for="id-3-disabled" disabled>
+                        <input id="id-3-disabled" type="radio" name="radio">
+                        <span class="custom-radio"></span>
+                        <span class="form-control-value">disabled radio</span>
+                    </label>
+                </div>
+                <div class="form-control">
+                    <button class="form-btn" type="submit">button</button>
+                    <button class="form-btn" type="submit" disabled>button</button>
+                    <a class="form-btn" href="#">button</a>
+                    <a class="form-btn" href="#" disabled>button</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block scripts %}{% endblock %}

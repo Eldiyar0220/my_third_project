@@ -1,0 +1,118 @@
+{% load static %}
+
+<div class="faq__sidebar-wrap">
+    <div class="faq__sidebar">
+        <div class="faq__links">
+            <a href="#" class="faq__link about-us">
+                О нас
+            </a>
+            <a href="#" class="faq__link contacts">
+                Контакты
+            </a>
+            <a href="#" class="faq__link faq active">
+                F.A.Q
+            </a>
+        </div>
+        <span class="faq__contact-us"
+              data-micromodal-trigger="questions">
+            Cвязаться с нами
+        </span>
+    </div>
+</div>
+
+<div class="modal micromodal-slide" id="questions"
+     aria-hidden="true">
+    <div class="modal__overlay add__product-overlay" tabindex="-1"
+         data-micromodal-close>
+        <div class="modal__container" role="dialog" aria-modal="true">
+            <div class="area__modal">
+                <h2 class="modal__title">
+                    Остались вопросы?
+                </h2>
+                <form action="">
+                    <label class="sign__label">
+                        Email
+                    </label>
+                    <input required type="text" class="sign__input"
+                           placeholder="Введите email">
+
+                    <label class="sign__label">
+                        Номер телефона
+                    </label>
+                    <input required type="text" class="sign__input"
+                           placeholder="+996 999 999 999 ">
+
+                    <label class="sign__label">
+                        Как вас зовут?
+                    </label>
+                    <input required type="text" class="sign__input"
+                           placeholder="Ваше Имя">
+
+                    <label class="sign__label">
+                        Комментарии
+                    </label>
+                    <textarea maxlength="324"
+                              class="sign__input modal__textarea"
+                              placeholder="Можете оставить комментарий"></textarea>
+                    <div class="symbol__counter">
+                            <span class="current__length">
+                                0
+                            </span>
+                        /
+                        <span class="total__length">
+                                324
+                            </span>
+                    </div>
+
+                    <button type="submit" class="personal__btn modal__btn">
+                        Сохранить изменения
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal micromodal-slide questions-success" id="questions-success"
+     aria-hidden="true">
+    <div class="modal__overlay add__product-overlay" tabindex="-1"
+         data-micromodal-close>
+        <div class="modal__container" role="dialog" aria-modal="true">
+            <div class="area__modal">
+                <img src="{% static 'img/png/questions-success.png' %}" alt="">
+                <h3>
+                    Спасибо за ваш вопрос!
+                </h3>
+                <p>
+                    Мы обязательно ответим на заданный
+                    вами вопрос
+                </p>
+                <button class="personal__btn modal__btn" data-micromodal-close="questions-success">
+                    Хорошо
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $('.micromodal-slide .modal__textarea').on('input', function () {
+        var currentNum = $(this).siblings('.symbol__counter').children('.current__length');
+        var limit = Number($(this).siblings('.symbol__counter')
+            .children('.total__length').text());
+        var valueLength = $(this).val().length;
+
+        this.style.height = "";
+        this.style.height = this.scrollHeight + 2 + "px";
+
+        currentNum.text(valueLength);
+        if (valueLength === limit) {
+            currentNum.addClass('warning');
+        } else {
+            currentNum.removeClass('warning');
+        }
+    })
+</script>
+<script>
+    {#MicroModal.show('questions-success');  показать модалку что отправлено#}
+</script>

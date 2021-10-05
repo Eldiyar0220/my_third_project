@@ -1,0 +1,294 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title_page %}{% endblock %}
+
+{% block style-libs %}{% endblock %}
+
+{% block style %}{% endblock %}
+
+{% block content %}
+
+    <div class="parcel__flex">
+        {% include 'components/sidebar-menu/sidebar-menu.html' %}
+        <div class="container">
+            <div class="parcel__content personal__content">
+                <form action="">
+                    <div class="personal__box">
+                        <h2 class="personal__title">
+                            Личный кабинет
+                        </h2>
+                        <div>
+                            <label for="email">
+                                Ваш электронный адрес
+                            </label>
+                            <input type="text" id="email"
+                                   placeholder="Ваш электронный адрес" required>
+                        </div>
+
+                        <div>
+                            <label for="name">
+                                Имя
+                            </label>
+                            <input type="text" id="name" placeholder="Имя"
+                                   required>
+                        </div>
+
+                        <div>
+                            <label for="surname">
+                                Фамилия
+                            </label>
+                            <input type="text" id="surname"
+                                   placeholder="Фамилия" required>
+                        </div>
+
+                        <div>
+                            <label for="patronymic">
+                                Отчество
+                            </label>
+                            <input type="text" id="patronymic"
+                                   placeholder="Отчество">
+                        </div>
+
+                        <div>
+                            <label for="address">
+                                Адрес проживания
+                            </label>
+                            <input type="text" id="address"
+                                   placeholder="Адрес проживания" required>
+                        </div>
+
+                        <div class="personal__flex">
+                            <div>
+                                <label for="city">
+                                    Город
+                                </label>
+                                <input type="text" id="city" placeholder="Город"
+                                       required>
+                            </div>
+                            <div>
+                                <label for="house">
+                                    Дом
+                                </label>
+                                <input type="text" id="house" placeholder="Дом"
+                                       required>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="postcode">
+                                Почтовый индекс*
+                            </label>
+                            <input type="text" id="postcode"
+                                   placeholder="Почтовый индекс*" required>
+                        </div>
+
+                        <div>
+                            <label for="scan-out" class="sign__label">
+                                Скан паспорта (Внешняя часть)
+                            </label>
+                            <div class="file__input-wrap">
+                                <input type="file" id="scan-out" required
+                                       accept="image/*">
+                                <input type="text"
+                                       class="sign__input file__upload"
+                                       placeholder="Перенсите файл сюда"
+                                       readonly>
+                                <button type="button" class="file__icon">
+                                    <svg width="16" height="16"
+                                         viewBox="0 0 16 16" fill="none"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                        <g clip-path="url(#clip0)">
+                                            <path d="M14.9367 2.69627C14.2499 2.00945 13.3368 1.63123 12.3655 1.63123C11.3942 1.63123 10.4811 2.00945 9.79427 2.69627L4.06223 8.42826C3.21159 9.2789 3.21159 10.663 4.06228 11.5137C4.91297 12.3644 6.29712 12.3643 7.14776 11.5136L10.9222 7.73922C11.2062 7.4552 11.2062 6.99476 10.9222 6.71074C10.6382 6.42672 10.1777 6.42672 9.89371 6.71074L6.11928 10.4852C5.83575 10.7688 5.37433 10.7688 5.09075 10.4852C4.80718 10.2016 4.80718 9.74022 5.09071 9.45669L10.8228 3.72479C11.2349 3.31273 11.7827 3.08578 12.3655 3.08578C12.9483 3.08578 13.4961 3.31273 13.9082 3.72479C14.7588 4.57548 14.7589 5.95959 13.9083 6.81028L7.66202 13.0564C6.24417 14.4741 3.93729 14.4741 2.51958 13.0564C1.83277 12.3696 1.4545 11.4565 1.4545 10.4852C1.4545 9.51395 1.83277 8.60077 2.51958 7.91395L8.7657 1.66774C9.04971 1.38373 9.04971 0.923279 8.7657 0.639263C8.48173 0.355296 8.02124 0.355247 7.73722 0.639263L1.49111 6.88547C0.529535 7.847 0 9.12541 0 10.4852C0 11.845 0.529535 13.1234 1.49111 14.0849C2.48366 15.0775 3.78699 15.5737 5.09075 15.5735C6.39423 15.5735 7.69814 15.0772 8.6905 14.0849L14.9368 7.83871C16.3545 6.42091 16.3544 4.11407 14.9367 2.69627Z"
+                                                  fill="#1D1D1D"/>
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0">
+                                                <rect width="16" height="16"
+                                                      fill="white"/>
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="scan-in" class="sign__label">
+                                Скан паспорта (Внутреняя часть)
+                            </label>
+                            <div class="file__input-wrap">
+                                <input type="file" id="scan-in" required
+                                       accept="image/*">
+                                <input type="text"
+                                       class="sign__input file__upload"
+                                       placeholder="Перенсите файл сюда"
+                                       readonly>
+                                <button type="button" class="file__icon">
+                                    <svg width="16" height="16"
+                                         viewBox="0 0 16 16" fill="none"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                        <g clip-path="url(#clip0)">
+                                            <path d="M14.9367 2.69627C14.2499 2.00945 13.3368 1.63123 12.3655 1.63123C11.3942 1.63123 10.4811 2.00945 9.79427 2.69627L4.06223 8.42826C3.21159 9.2789 3.21159 10.663 4.06228 11.5137C4.91297 12.3644 6.29712 12.3643 7.14776 11.5136L10.9222 7.73922C11.2062 7.4552 11.2062 6.99476 10.9222 6.71074C10.6382 6.42672 10.1777 6.42672 9.89371 6.71074L6.11928 10.4852C5.83575 10.7688 5.37433 10.7688 5.09075 10.4852C4.80718 10.2016 4.80718 9.74022 5.09071 9.45669L10.8228 3.72479C11.2349 3.31273 11.7827 3.08578 12.3655 3.08578C12.9483 3.08578 13.4961 3.31273 13.9082 3.72479C14.7588 4.57548 14.7589 5.95959 13.9083 6.81028L7.66202 13.0564C6.24417 14.4741 3.93729 14.4741 2.51958 13.0564C1.83277 12.3696 1.4545 11.4565 1.4545 10.4852C1.4545 9.51395 1.83277 8.60077 2.51958 7.91395L8.7657 1.66774C9.04971 1.38373 9.04971 0.923279 8.7657 0.639263C8.48173 0.355296 8.02124 0.355247 7.73722 0.639263L1.49111 6.88547C0.529535 7.847 0 9.12541 0 10.4852C0 11.845 0.529535 13.1234 1.49111 14.0849C2.48366 15.0775 3.78699 15.5737 5.09075 15.5735C6.39423 15.5735 7.69814 15.0772 8.6905 14.0849L14.9368 7.83871C16.3545 6.42091 16.3544 4.11407 14.9367 2.69627Z"
+                                                  fill="#1D1D1D"/>
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0">
+                                                <rect width="16" height="16"
+                                                      fill="white"/>
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <button type="submit"
+                                class="personal__btn personal__save">
+                            Сохранить изменения
+                        </button>
+                    </div>
+                </form>
+                <div class="personal__instrument-wrap">
+                    <div class="personal__instrument">
+                        <div class="instrument__item edit__profile-btn">
+                            <svg width="16" height="16" viewBox="0 0 16 16"
+                                 fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M2.94666 13.7193C2.75965 13.719 2.58137 13.6402 2.45533 13.502C2.32696 13.365 2.26317 13.1797 2.28 12.9927L2.44333 11.1967L9.98866 3.65401L12.3467 6.01134L4.80333 13.5533L3.00733 13.7167C2.98666 13.7187 2.966 13.7193 2.94666 13.7193ZM12.8173 5.54001L10.46 3.18268L11.874 1.76868C11.999 1.64349 12.1687 1.57315 12.3457 1.57315C12.5226 1.57315 12.6923 1.64349 12.8173 1.76868L14.2313 3.18268C14.3565 3.30772 14.4269 3.4774 14.4269 3.65434C14.4269 3.83128 14.3565 4.00096 14.2313 4.12601L12.818 5.53934L12.8173 5.54001Z"
+                                      fill="#FFAF01"/>
+                            </svg>
+                            <span>
+                        Изменить профиль
+                    </span>
+                        </div>
+                        <div class="instrument__item"
+                             data-micromodal-trigger="change-password">
+                            <svg width="16" height="16" viewBox="0 0 16 16"
+                                 fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9.21344 14.6667H6.78678C6.47352 14.6667 6.20248 14.4487 6.13544 14.1427L5.86411 12.8867C5.50214 12.7281 5.15893 12.5298 4.84078 12.2953L3.61611 12.6853C3.31744 12.7806 2.99277 12.6549 2.83611 12.3833L1.62011 10.2827C1.46517 10.011 1.51855 9.66833 1.74878 9.45668L2.69878 8.59001C2.65557 8.19742 2.65557 7.80127 2.69878 7.40868L1.74878 6.54401C1.51821 6.33226 1.46481 5.98916 1.62011 5.71734L2.83344 3.61534C2.9901 3.34381 3.31478 3.2181 3.61344 3.31334L4.83811 3.70334C5.00082 3.58278 5.1702 3.47149 5.34544 3.37001C5.51367 3.27514 5.6868 3.18924 5.86411 3.11268L6.13611 1.85801C6.20282 1.55199 6.47357 1.33367 6.78678 1.33334H9.21344C9.52665 1.33367 9.7974 1.55199 9.86411 1.85801L10.1388 3.11334C10.326 3.19569 10.5083 3.28873 10.6848 3.39201C10.8496 3.4872 11.009 3.59158 11.1621 3.70468L12.3874 3.31468C12.6859 3.21979 13.0102 3.34545 13.1668 3.61668L14.3801 5.71868C14.535 5.99033 14.4817 6.33302 14.2514 6.54468L13.3014 7.41134C13.3446 7.80394 13.3446 8.20008 13.3014 8.59268L14.2514 9.45934C14.4817 9.671 14.535 10.0137 14.3801 10.2853L13.1668 12.3873C13.0102 12.6586 12.6859 12.7842 12.3874 12.6893L11.1621 12.2993C11.0071 12.4135 10.8459 12.5193 10.6794 12.616C10.5047 12.7173 10.3244 12.8088 10.1394 12.89L9.86411 14.1427C9.79712 14.4484 9.52645 14.6664 9.21344 14.6667ZM7.99744 5.33334C6.52468 5.33334 5.33078 6.52725 5.33078 8.00001C5.33078 9.47277 6.52468 10.6667 7.99744 10.6667C9.4702 10.6667 10.6641 9.47277 10.6641 8.00001C10.6641 6.52725 9.4702 5.33334 7.99744 5.33334Z"
+                                      fill="#FFAF01"/>
+                            </svg>
+                            <span>
+                        Изменить пароль
+                    </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{#                                модалка изменения пароля#}
+    <div class="modal micromodal-slide" id="change-password" aria-hidden="true">
+        <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+            <div class="modal__container" role="dialog" aria-modal="true">
+                <div class="area__modal">
+                    <div class="modal__close" data-micromodal-close></div>
+                    <h2 class="modal__title">
+                        Смена пароля
+                    </h2>
+                    <p class="modal__subtitle">
+                        Здесь вы можете поменять пароль
+                    </p>
+                    <form action="">
+                        <label for="sign-email" class="sign__label">
+                            Старый пароль
+                        </label>
+                        <input required type="password" id="sign-email"
+                               class="sign__input"
+                               placeholder="Ваш пароль">
+                        <label for="sign-password" class="sign__label">
+                            Новый пароль
+                        </label>
+                        <div class="sign__input-wrap">
+                            <input required type="password" id="sign-password"
+                                   class="sign__input"
+                                   placeholder="Ваш новый пароль">
+                            <div class="sign__eye"></div>
+                        </div>
+                        <label for="sign-password" class="sign__label">
+                            Повторите пароль
+                        </label>
+                        <div class="sign__input-wrap">
+                            <input required type="password"
+                                   id="sign-password-repeat" class="sign__input"
+                                   placeholder="Повторите новый пароль">
+                            <div class="sign__eye"></div>
+                        </div>
+                        <button type="submit" class="personal__btn modal__btn">
+                            Сохранить изменения
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{#                                   модалка пароль успешно изменен#}
+    <div class="modal micromodal-slide" id="change-password-success"
+         aria-hidden="true">
+        <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+            <div class="modal__container" role="dialog" aria-modal="true">
+                <div class="area__modal">
+                    <div class="modal__close" data-micromodal-close></div>
+                    <div class="modal__inner">
+                        <img src="{% static 'img/png/password-changed.png' %}"
+                             alt="">
+                        <p class="success__text">
+                            Ваш пароль успешно
+                            изменен!
+                        </p>
+                        <button type="submit" class="personal__btn modal__btn"
+                                data-micromodal-close>
+                            Хорошо
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{#                                    модалка профиль изменен#}
+    <div class="modal micromodal-slide" id="edit-profile-success"
+         aria-hidden="true">
+        <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+            <div class="modal__container" role="dialog" aria-modal="true">
+                <div class="area__modal">
+                    <div class="modal__close" data-micromodal-close></div>
+                    <div class="modal__inner">
+                        <img src="{% static 'img/png/edit-profile.png' %}"
+                             alt="">
+                        <p class="success__text">
+                            Ваш профиль успешно
+                            изменен!
+                        </p>
+                        <button type="submit" class="personal__btn modal__btn"
+                                data-micromodal-close>
+                            Хорошо
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        $(function () {
+            $('.file__input-wrap input[type=file]').change(function () {
+                $(this).siblings('.file__upload').val(this.files[0].name);
+            });
+        })
+    </script>
+    <script>
+        $('.edit__profile-btn').on('click', function () {
+            $('.personal__title').text('Редактирование профиля');
+            $(this).parent().addClass('hide');
+            $('.personal__btn.personal__save').addClass('show')
+        })
+    </script>
+    <script>
+        {#  MicroModal.show('change-password-success');   показать модалку что отправлено  #}
+        {#  MicroModal.show('edit-profile-success');    показать модалку что отправлено  #}
+    </script>
+{% endblock %}
