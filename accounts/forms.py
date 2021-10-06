@@ -1,7 +1,11 @@
 from django import forms
+from django.contrib.auth import get_user, get_user_model, login
+from django.contrib.auth.hashers import check_password
+from django.contrib.auth.forms import UserCreationForm
 
 from accounts.models import User
 
+User = get_user_model()
 
 class UserRegistrationForm(forms.ModelForm):
     email = forms.EmailField(required=True,widget=forms.EmailInput(attrs={'class':'sign__input required','type':'text','id':"reg-email", 'name':"reg-email", 'placeholder':'Email или ваша почта'}))
@@ -38,3 +42,26 @@ class UserRegistrationForm(forms.ModelForm):
         if password != password_confirm:
             raise forms.ValidationError('Пароли не совпадает!')
         return self.cleaned_data
+
+
+class SignForm(forms.Form):
+    email = forms.EmailField(required=True, widget=forms.TextInput(attrs={ 'class': 'sign__input', 'placeholder': 'Email или ваша почта' }))
+    password = forms.CharField(required=True, widget=forms.PasswordInput(attrs={ 'class': 'sign__input', 'placeholder': 'Пароль!!' }))
+
+
+
+    def clean(self, *args, **kwargs):
+        email = self.cleaned_data.get('email')
+        password = self.cleaned_data.get('password')
+        if email and password:
+            qs = User.objects.filter(email=email)
+            if not qs.exists():
+                raise forms.ValidationError('Email не найден попробуйте снова')
+            if not check_password(password, qs[0].password):
+                raise forms.ValidationError('Неверный пароль')
+        return super().clean(*args, **kwargs)
+
+
+
+
+

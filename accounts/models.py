@@ -37,8 +37,8 @@ class User(AbstractUser):
     number_of_address = models.CharField(max_length=13)
     postal_code = models.CharField(max_length=150)
     telegram = models.CharField(max_length=150)
-    passport_out = models.ImageField(upload_to='scan_out')
-    passport_in = models.ImageField(upload_to='scan_in')
+    # passport_out = models.ImageField(upload_to='scan_out')
+    # passport_in = models.ImageField(upload_to='scan_in')
     is_active = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
 
@@ -51,11 +51,6 @@ class User(AbstractUser):
     def __str__(self):
         return f'{self.email}'
 
-    def create_activation_code(self):
-        from django.utils.crypto import get_random_string
-        code = get_random_string(8, '0123456789')
-        self.activation_code = code
-        self.save()
 
     def has_module_perms(self, app_label):
         return self.is_staff

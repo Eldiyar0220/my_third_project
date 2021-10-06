@@ -148,8 +148,10 @@ EMAIL_PORT = config('EMAIL_PORT', cast=int)
 EMAIL_HOST_USER = config('EMAIL_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_PASSWORD')
 
-LOGIN_REDIRECT_URL = 'home'
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'home'

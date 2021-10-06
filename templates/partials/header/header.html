@@ -1,16 +1,21 @@
+
+  
 {% load static %}
 
 <header class="header">
     <div class="container">
         <div class="header__inner">
-            <a href="#" class="logo">
+            <a href="" class="logo">
                 <img src="{% static 'img/png/logo.png' %}" alt=""
                      class="logo__pic">
             </a>
+
             <div class="header__nav-wrap">
-                <div class="header__sign">
-                    {# когда пользователь вошел добавить класс "dropdown" на header__sign #}
-                    <a href="{% url 'register' %}" class="sign__in">
+
+                {% if request.user.is_authenticated %}
+                    <div class="header__sign dropdown">
+                    <a href="{% url 'login' %}" class="sign__in">
+
                         <svg width="16" height="16" viewBox="0 0 16 16"
                              fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M7.99992 9.01215C3.19252 9.01215 0.544922 11.2864 0.544922 15.4161C0.544922 15.7386 0.806328 16 1.12886 16H14.871C15.1935 16 15.4549 15.7386 15.4549 15.4161C15.4549 11.2866 12.8073 9.01215 7.99992 9.01215ZM1.73405 14.8321C1.96373 11.7444 4.06883 10.1801 7.99992 10.1801C11.931 10.1801 14.0361 11.7444 14.266 14.8321H1.73405Z"
@@ -18,13 +23,17 @@
                             <path d="M7.99945 0C5.79117 0 4.12598 1.69869 4.12598 3.95116C4.12598 6.26959 5.8636 8.15553 7.99945 8.15553C10.1353 8.15553 11.8729 6.26959 11.8729 3.95134C11.8729 1.69869 10.2077 0 7.99945 0ZM7.99945 6.98784C6.50748 6.98784 5.29385 5.62569 5.29385 3.95134C5.29385 2.3385 6.43176 1.16788 7.99945 1.16788C9.54205 1.16788 10.7051 2.36438 10.7051 3.95134C10.7051 5.62569 9.49142 6.98784 7.99945 6.98784Z"
                                   fill="#1D1D1D"/>
                         </svg>
+
                         <span class="sign__in-item">
-                        Войти
-                    </span>
+                        {{ request.user.username }}
+                      </span>
+
+
                     </a>
                     <div class="dropdown__wrap">
                         <div class="dropdown__item">
-                            <a href="#" class="dropdown__link">
+
+                            <a href="" class="dropdown__link">
                                 <svg width="20" height="20" viewBox="0 0 20 20"
                                      fill="none"
                                      xmlns="http://www.w3.org/2000/svg">
@@ -37,7 +46,9 @@
                             Профиль
                         </span>
                             </a>
-                            <a href="#" class="dropdown__link">
+
+
+                            <a href="" class="dropdown__link">
                                 <svg width="20" height="20" viewBox="0 0 20 20"
                                      fill="none"
                                      xmlns="http://www.w3.org/2000/svg">
@@ -48,7 +59,7 @@
                             Мои посылки
                         </span>
                             </a>
-                            <a href="#"
+                            <a href="{% url 'logout' %}"
                                class="dropdown__link dropdown__link-exit">
                                 <svg width="20" height="20" viewBox="0 0 20 20"
                                      fill="none"
@@ -63,29 +74,48 @@
                         </div>
                     </div>
                 </div>
+                {% else %}
+                <div class="header__sign }">
+                    <a href="{% url 'login' %}" class="sign__in">
+
+                        <svg width="16" height="16" viewBox="0 0 16 16"
+                             fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7.99992 9.01215C3.19252 9.01215 0.544922 11.2864 0.544922 15.4161C0.544922 15.7386 0.806328 16 1.12886 16H14.871C15.1935 16 15.4549 15.7386 15.4549 15.4161C15.4549 11.2866 12.8073 9.01215 7.99992 9.01215ZM1.73405 14.8321C1.96373 11.7444 4.06883 10.1801 7.99992 10.1801C11.931 10.1801 14.0361 11.7444 14.266 14.8321H1.73405Z"
+                                  fill="#1D1D1D"/>
+                            <path d="M7.99945 0C5.79117 0 4.12598 1.69869 4.12598 3.95116C4.12598 6.26959 5.8636 8.15553 7.99945 8.15553C10.1353 8.15553 11.8729 6.26959 11.8729 3.95134C11.8729 1.69869 10.2077 0 7.99945 0ZM7.99945 6.98784C6.50748 6.98784 5.29385 5.62569 5.29385 3.95134C5.29385 2.3385 6.43176 1.16788 7.99945 1.16788C9.54205 1.16788 10.7051 2.36438 10.7051 3.95134C10.7051 5.62569 9.49142 6.98784 7.99945 6.98784Z"
+                                  fill="#1D1D1D"/>
+                        </svg>
+
+                        <span class="sign__in-item">
+                        Войти
+                      </span>
+                    </a>
+                </div>
+                {% endif %}
+
                 <ul class="header__nav">
                     <li class="nav__item">
-                        <a href="#" class="nav__link">
+                        <a href="" class="nav__link">
                             О нас
                         </a>
                     </li>
                     <li class="nav__item">
-                        <a href="#" class="nav__link">
+                        <a href="" class="nav__link">
                             Магазины
                         </a>
                     </li>
                     <li class="nav__item">
-                        <a href="#" class="nav__link">
+                        <a href="" class="nav__link">
                             Как это работает?
                         </a>
                     </li>
                     <li class="nav__item">
-                        <a href="#" class="nav__link">
+                        <a href="" class="nav__link">
                             Новости и Акции
                         </a>
                     </li>
                     <li class="nav__item">
-                        <a href="#" class="nav__link">
+                        <a href="" class="nav__link">
                             F.A.Q
                         </a>
                     </li>
