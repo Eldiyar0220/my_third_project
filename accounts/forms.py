@@ -56,21 +56,16 @@ class SignForm(forms.Form):
 
 
 
-    def clean_email(self):
+    def clean(self, *args, **kwargs):
         email = self.cleaned_data.get('email')
-        if email:
+        password = self.cleaned_data.get('password')
+        if email and password:
             qs = User.objects.filter(email=email)
             if not qs.exists():
                 raise forms.ValidationError('Email не найден попробуйте снова!')
-        return email
-
-
-    def clean(self):
-        password = self.cleaned_data.get('password')
-        if password != User.objects.filter(password=password):
-            raise forms.ValidationError('Неверный пароль')
-        return password
-
+            if not check_password(password, qs[0].password):
+                raise forms.ValidationError('Неверный пароль')
+        return super().clean(*args, **kwargs)
 
 
 
