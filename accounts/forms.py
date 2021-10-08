@@ -64,7 +64,7 @@ class SignForm(forms.Form):
             if not qs.exists():
                 raise forms.ValidationError('Email не найден попробуйте снова!')
             if not check_password(password, qs[0].password):
-                raise forms.ValidationError('Неверный пароль')
+                raise forms.ValidationError('Неверный пароль!')
         return super().clean(*args, **kwargs)
 
 
