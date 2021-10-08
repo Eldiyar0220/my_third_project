@@ -14,7 +14,7 @@
 
                 {% if request.user.is_authenticated %}
                     <div class="header__sign dropdown">
-                    <a href="{% url 'login' %}" class="sign__in">
+                    <a href="" class="sign__in">
 
                         <svg width="16" height="16" viewBox="0 0 16 16"
                              fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -115,7 +115,7 @@
                         </a>
                     </li>
                     <li class="nav__item">
-                        <a href="" class="nav__link">
+                        <a href="{% url 'logout' %}" class="nav__link">
                             F.A.Q
                         </a>
                     </li>

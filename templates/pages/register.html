@@ -39,16 +39,12 @@
                                         Ваш электронный адрес
                                     </label>
                                     {{ form.email }}
-
-                                    <div>
-                                        {% for key in form.errors.email %}
+                                     {% if form.email.errors %}
                                        <p class="email__error">
-                                           {{ key }}
+                                          аккаунт занят, попробуйте другое!<br>
+                                           например alex@gmail.com
                                        </p>
-                                        {% endfor %}
-                                    </div>
-                                     
-                                 </div>
+                                     {% endif %}</div>
                                 <div class="fields {% for e in form.non_field_errors %}{% if e %}error{% endif %}{% endfor %}">
                                 <label for="reg-password" class="sign__label">
                                     Ваш пароль
@@ -60,15 +56,13 @@
                                     Ваш пароль
                                 </label>
                                         {{ form.password_confirm }}
-                                <div>
-                                        {% for key in form.non_field_errors %}
-                                        <p class="email__error">
-                                          {{ key }}
-                                       </p>
-                                        {% endfor %}
-                                    </div>
+                                 {% if form.non_field_errors %}
+                                   <p class="email__error">
+                                      Пароли не совпадают
+                                   </p>
+                                {% endif %}
                                 </div>
-                                <button class="sign__btn">
+                                <button class="sign__btn" >
                                     Следующий шаг
                                 </button>
                                 <p class="sign__link">
@@ -103,9 +97,6 @@
 <!--                                <input required type="text" id="name" name="name" class="sign__input required"-->
 <!--                                       placeholder="Например Айбек">-->
                                 {{ form.username }}
-                                {% for key, value in form.errors.items %}
-                               {{ key }}{{ value }}
-                                {% endfor %}
                                 <label for="surname" class="sign__label">
                                     Фамилия*
                                 </label>
@@ -120,14 +111,11 @@
 <!--                                       placeholder="Ваше Отчество">-->
                                 {{ form.before_last_name }}
 
-
-       {% for field in form %}
-           {% for error in field.errors %}
-             <p class="email__error">
-                       {{ error }}
-                       </p>
-           {% endfor %}
-       {% endfor %}
+                                       {% if  form.errors %}
+                                         <p class="email__error">
+                                                   Заполните поле!
+                                                   </p>
+                                       {% endif %}
 
                                 </div>
                                 <label for="patronymic" class="sign__label">
@@ -138,6 +126,11 @@
                                     Телефон номер
                                 </label>
                                 {{ form.phone_number }}
+                                {% for error in form.phone.errors %}
+                                   <p class="email__error">
+                                     {{error}}
+                                   </p>
+                                {% endfor %}
                                 <button class="sign__btn" >
                                     Следующий шаг
                                 </button>

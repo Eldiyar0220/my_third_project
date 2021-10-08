@@ -18,8 +18,8 @@
     <div class="sign registration">
         <div class="sign__wrap">
             <div class="sign__inner">
-                <form action="" method="POST">
-                    {% csrf_token %}
+                <form action="" id="reg__from" method="POST">
+                     {% csrf_token %}
                     <div class="sign__content swiper-container registration-slider">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
@@ -34,41 +34,57 @@
                                 <p class="reg__subtitle">
                                     Рады вас видеть! Здесь вы сможете зарегестрироваться
                                 </p>
-                                 <div class="fields {% if form.email.errors %}error{% endif %}">
-                                    <label for="sign-email" class="sign__label">
+                                <div class="fields {% if user_form.email.errors %}error{% endif %}">
+                                    <label  class=" fields sign__label ">
                                         Ваш электронный адрес
                                     </label>
-                                    {{ form.email }}
+<!--                                <input required type="text" id="reg-email" name="reg-email"-->
+<!--                                       class="sign__input  required"-->
+<!--                                       placeholder="Email или ваша почта"-->
+<!--                                       >-->
+                                        {{ form.email }}
 
-                                    <div>
-                                        {% for key in form.errors.email %}
-                                       <p class="email__error">
-                                           {{ key }}
-                                       </p>
-                                        {% endfor %}
-                                    </div>
-                                     
-                                 </div>
-                                <div class="fields {% for e in form.non_field_errors %}{% if e %}error{% endif %}{% endfor %}">
-                                <label for="reg-password" class="sign__label">
-                                    Ваш пароль
-                                </label>
-                                {{ form.password }}
-                                </div>
-                                <div class="fields {% for e in form.non_field_errors %}{% if e %}error{% endif %}{% endfor %}">
+                                          {% if form.email.errors %}
+
+                                           <p class="email__error ">
+                                              Пользователь уже зарегестрировался
+                                           </p>
+                                        {% endif %}</div>
+                                <div class="fields {% for e in form.non_field_errors %}
+                        {% if e %}error{% endif %}
+                        {% endfor %}">
                                 <label class="sign__label">
                                     Ваш пароль
                                 </label>
-                                        {{ form.password_confirm }}
-                                <div>
-                                        {% for key in form.non_field_errors %}
-                                        <p class="email__error">
-                                          {{ key }}
-                                       </p>
-                                        {% endfor %}
-                                    </div>
+<!--                                <input required type="password" id="reg-password" name="reg-password"-->
+<!--                                       class="sign__input required"-->
+<!--                                       placeholder="Пароль">-->
+                                        {{ form.password }}
+                                 {% if form.non_field_errors %}
+                                   <p class="email__error">
+                                      Пароли не совпадают
+                                   </p>
+                                {% endif %}
                                 </div>
-                                <button class="sign__btn">
+                                <div class="fields {% for e in form.non_field_errors %}
+                        {% if e %}error{% endif %}
+                        {% endfor %}">
+                                <label  class="sign__label">
+                                    Повторите пароль
+                                </label>
+<!--                                <input required type="password" id="reg-repeat-password" name="reg-repeat-password"-->
+<!--                                       class="sign__input required"-->
+<!--                                       placeholder="Повторите пароль">-->
+                                {{ form.password_confirm }}
+
+                                 {% for i in form.non_field_errors %}
+                                   <p class="email__error">
+                                      Пароли не совпадают{{ i.password_confirm.errors }}
+                                   </p>
+                                 {% endfor %}
+                                </div>
+
+                                <button type="submit" class="sign__btn" >
                                     Следующий шаг
                                 </button>
                                 <p class="sign__link">
@@ -84,8 +100,8 @@
                                                   fill="#161616"/>
                                         </svg>
                                         <span>
-                                              Назад
-                                        </span>
+                                                                                                                            Назад
+                                                                                                                        </span>
                                     </div>
                                     <div class="sign__logo">
                                         <img src="{% static 'img/png/logo.png' %}" alt="">
@@ -100,45 +116,63 @@
                                 <label for="name" class="sign__label">
                                     Имя*
                                 </label>
-<!--                                <input required type="text" id="name" name="name" class="sign__input required"-->
-<!--                                       placeholder="Например Айбек">-->
                                 {{ form.username }}
-                                {% for key, value in form.errors.items %}
-                               {{ key }}{{ value }}
-                                {% endfor %}
+<!--                                     {% for i in has_assignment_form.non_field_errors %}-->
+<!--                                        <p class="email__error ">-->
+<!--                                             empty{{ i.username }}-->
+<!--                                           </p>-->
+<!--                                    {% endfor %}-->
+                                <div>
+                                {% if form.errors %}
+
+                                           <p class="email__error ">
+                                               empty
+                                           </p>
+                                        {% endif %}</div>
+<!--                                 {% if user_form.non_field_errors %}-->
+<!--                                   <p class="email__error">-->
+<!--                                      Заполните поле-->
+<!--                                   </p>-->
+<!--                                {% endif %}-->
                                 <label for="surname" class="sign__label">
                                     Фамилия*
                                 </label>
 <!--                                <input required type="text" id="surname" name="surname" class="sign__input required"-->
 <!--                                       placeholder="Ваша Фамилия">-->
                                 {{ form.last_name }}
-                                <div class="fields {% for e in form.non_field_errors %}{% if e %}error{% endif %}{% endfor %}">
                                 <label for="patronymic" class="sign__label">
                                     Отчество
                                 </label>
 <!--                                <input type="text" id="patronymic" name="patronymic" class="sign__input"-->
 <!--                                       placeholder="Ваше Отчество">-->
-                                {{ form.before_last_name }}
+                                {{ user_form.before_last_name }}
 
+                                <div class="fields {% for e in form.phone_number %}
+                        {% if e %}error{% endif %}
+                        {% endfor %}">
+                                <label for="phone" class="sign__label">
+                                    Номер Телефона
+                                </label>
+                                {{ form.phone_number }}
 
-       {% for field in form %}
-           {% for error in field.errors %}
-             <p class="email__error">
-                       {{ error }}
-                       </p>
-           {% endfor %}
-       {% endfor %}
-
+<!--                                            {% if user_form.phone_number.errors %}-->
+<!--                                           <p class="email__error ">-->
+<!--                                               Номер должен начинатся с +996-->
+<!--                                           </p>-->
+<!--                                        {% endif %}-->
+                                    {% if form.phone_number %}
+                                   <p class="email__error">
+                                      Пароли не совпадают
+                                   </p>
+                                {% endif %}
                                 </div>
-                                <label for="patronymic" class="sign__label">
+                                 <label for="telegram" class="sign__label">
                                     Телеграм
                                 </label>
                                 {{ form.telegram }}
-                                <label for="patronymic" class="sign__label">
-                                    Телефон номер
-                                </label>
-                                {{ form.phone_number }}
-                                <button class="sign__btn" >
+
+
+                                <button class="sign__btn">
                                     Следующий шаг
                                 </button>
                             </div>
@@ -175,7 +209,7 @@
                                 </label>
 <!--                                <input type="text" id="address" name="address" class="sign__input required"-->
 <!--                                       placeholder="Адрес фактического проживания" required>-->
-                                {{ form.address_living }}
+                                {{ user_form.address_living }}
                                 <label for="apartment" class="sign__label">
                                     Дом*
                                 </label>
@@ -188,7 +222,7 @@
 <!--                                <input type="text" id="postcode" name="postcode" class="sign__input required"-->
 <!--                                       placeholder="Ваш почтовый индекс" required>-->
                                 {{ form.postal_code }}
-                                <button class="sign__btn">
+                                <button class="sign__btn" >
                                     Следующий шаг
                                 </button>
                             </div>
@@ -244,7 +278,6 @@
                                     <input type="file" id="scan-in" name="" required accept="image/*">
                                     <input type="text" class="sign__input file__upload required"
                                            placeholder="Перенсите файл сюда" readonly>
-
                                     <button type="button" class="file__icon">
                                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
                                              xmlns="http://www.w3.org/2000/svg">
@@ -260,14 +293,16 @@
                                         </svg>
                                     </button>
                                 </div>
-                                <div class="condition-wrap">
+
+                                <div class="condition-wrap" >
                                     <input type="checkbox" id="condition" checked required>
                                     <label for="condition" class="condition">
-                                        Принимаю условия конфиденциальности
-                                        и политику безопасности
+                                        <a href="" style="color: blue;">Принимаю условия конфиденциальности
+                                        и политику безопасности</a>
                                     </label>
+
                                 </div>
-                                <button type="submit" class="reg__submit">
+                                <button  class="reg__submit" >
                                     Начнем!
                                 </button>
                             </div>
@@ -387,6 +422,15 @@
 {% endblock %}
 
 {% block scripts %}
+    <script>
+    sign__input
+    document.querySelector('#reg__from').addEventListener('submit',(e) => {
+    e.preventDefault();
+    const formData = Object.fromEntries(new FormData(e.target).entries());
+    console.log(formData,'asd')
+    })
+        if()
+    </script>
     <script>
         $(document).on('change keyup', '.required', function () {
             var isValidInput = false;

@@ -39,15 +39,21 @@
                                         Ваш электронный адрес
                                     </label>
                                     {{ form.email }}
-
-                                    <div>
-                                        {% for key in form.errors.email %}
+                                     {% if form.email.errors %}
                                        <p class="email__error">
-                                           {{ key }}
+                                          аккаунт занят, попробуйте другое!<br>
+                                           например alex@gmail.com
                                        </p>
-                                        {% endfor %}
-                                    </div>
-                                     
+                                     {% endif %}
+
+<!--<div>-->
+<!--      {% for key in form.errors.email %}-->
+<!--   <p class="email__error">-->
+<!--       {{ key }}-->
+<!--   </p>-->
+<!--    {% endfor %}-->
+<!--</div>-->
+
                                  </div>
                                 <div class="fields {% for e in form.non_field_errors %}{% if e %}error{% endif %}{% endfor %}">
                                 <label for="reg-password" class="sign__label">
@@ -103,9 +109,13 @@
 <!--                                <input required type="text" id="name" name="name" class="sign__input required"-->
 <!--                                       placeholder="Например Айбек">-->
                                 {{ form.username }}
-                                {% for key, value in form.errors.items %}
-                               {{ key }}{{ value }}
-                                {% endfor %}
+                                       {% for field in form %}
+           {% for error in field.errors %}
+             <p class="email__error">
+                       {{ error }}
+                       </p>
+           {% endfor %}
+       {% endfor %}
                                 <label for="surname" class="sign__label">
                                     Фамилия*
                                 </label>

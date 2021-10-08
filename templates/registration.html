@@ -1,0 +1,479 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title_page %}
+    sign
+{% endblock %}
+
+{% block page %}sign-page{% endblock %}
+
+{% block body-class %}sign-body{% endblock %}
+
+{% block style-libs %}{% endblock %}
+
+{% block style %}{% endblock %}
+
+{% block content %}
+
+    <div class="sign registration">
+        <div class="sign__wrap">
+            <div class="sign__inner">
+                <form action="" id="reg__from" method="POST">
+                     {% csrf_token %}
+                    <div class="sign__content swiper-container registration-slider">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="sign__head">
+                                    <div class="sign__logo">
+                                        <img src="{% static 'img/png/logo.png' %}" alt="">
+                                    </div>
+                                </div>
+                                <h2 class="sign__title reg__title">
+                                    Регистрация
+                                </h2>
+                                <p class="reg__subtitle">
+                                    Рады вас видеть! Здесь вы сможете зарегестрироваться
+                                </p>
+                                <div class="fields {% if user_form.email.errors %}error{% endif %}">
+                                    <label  class=" fields sign__label ">
+                                        Ваш электронный адрес
+                                    </label>
+
+<!--                                <input required type="text" id="reg-email" name="reg-email"-->
+<!--                                       class="sign__input  required"-->
+<!--                                       placeholder="Email или ваша почта"-->
+<!--                                       >-->
+                                        {{ user_form.email }}
+
+                                          {% if user_form.email.errors %}
+
+                                           <p class="email__error ">
+                                              Пользователь уже зарегестрировался
+                                           </p>
+                                        {% endif %}</div>
+                                <div class="fields {% for e in user_form.non_field_errors %}
+                        {% if e %}error{% endif %}
+                        {% endfor %}">
+                                <label class="sign__label">
+                                    Ваш пароль
+                                </label>
+<!--                                <input required type="password" id="reg-password" name="reg-password"-->
+<!--                                       class="sign__input required"-->
+<!--                                       placeholder="Пароль">-->
+                                        {{ user_form.password }}
+                                 {% if user_form.non_field_errors %}
+                                   <p class="email__error">
+                                      Пароли не совпадают
+                                   </p>
+                                {% endif %}
+                                </div>
+                                <div class="fields {% for e in user_form.non_field_errors %}
+                        {% if e %}error{% endif %}
+                        {% endfor %}">
+                                <label  class="sign__label">
+                                    Повторите пароль
+                                </label>
+<!--                                <input required type="password" id="reg-repeat-password" name="reg-repeat-password"-->
+<!--                                       class="sign__input required"-->
+<!--                                       placeholder="Повторите пароль">-->
+                                {{ user_form.password_confirm }}
+
+                                 {% for i in user_form.non_field_errors %}
+                                   <p class="email__error">
+                                      Пароли не совпадают{{ i.password_confirm.errors }}
+                                   </p>
+                                 {% endfor %}
+                                </div>
+
+                                <button type="submit" class="sign__btn" >
+                                    Следующий шаг
+                                </button>
+                                <p class="sign__link">
+                                    Уже есть аккаунт? <a href="{% url 'login' %}">Войти</a>
+                                </p>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="sign__head">
+                                    <div class="reg__prev">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M10.2671 6.21967C10.5491 5.92678 11.0064 5.92678 11.2885 6.21967C11.5705 6.51256 11.5705 6.98744 11.2885 7.28033L7.46567 11.25H17.2778C17.6482 11.25 17.9534 11.5395 17.9951 11.9125L18 12C18 12.4142 17.6766 12.75 17.2778 12.75H7.46567L11.2885 16.7197C11.5488 16.99 11.5688 17.4155 11.3485 17.7097L11.2885 17.7803C11.0064 18.0732 10.5491 18.0732 10.2671 17.7803L5.21153 12.5303L5.15866 12.4691C5.15699 12.4669 5.15533 12.4647 5.15368 12.4626C5.14971 12.4574 5.14571 12.452 5.1418 12.4465C5.12891 12.4283 5.1168 12.4097 5.10549 12.3905C5.10011 12.3815 5.09497 12.3723 5.09004 12.363C5.08218 12.3482 5.07466 12.3329 5.06764 12.3173C5.06188 12.3046 5.05648 12.2916 5.05144 12.2785C5.04573 12.2637 5.04053 12.2488 5.03578 12.2338C5.0323 12.2226 5.02896 12.2111 5.02589 12.1995C5.02155 12.1833 5.0178 12.1671 5.01456 12.1506C5.01206 12.1375 5.00984 12.1245 5.00796 12.1113C5.00272 12.0753 5 12.038 5 12L5.00286 12.0669C5.00137 12.0495 5.00046 12.032 5.00013 12.0145L5 12C5 11.9952 5.00004 11.9904 5.00013 11.9856C5.00043 11.9685 5.00135 11.9508 5.00286 11.9331C5.00416 11.9176 5.00586 11.9029 5.00796 11.8883C5.00984 11.8755 5.01206 11.8625 5.01462 11.8495C5.0178 11.8329 5.02155 11.8167 5.0258 11.8006C5.02896 11.7889 5.0323 11.7774 5.03592 11.7659C5.04053 11.7512 5.04573 11.7363 5.05135 11.7217C5.05648 11.7084 5.06188 11.6954 5.06765 11.6826C5.07466 11.6671 5.08218 11.6518 5.09019 11.6368C5.09497 11.6277 5.10011 11.6185 5.10544 11.6095C5.1168 11.5903 5.12891 11.5717 5.14178 11.5536C5.16273 11.5243 5.18597 11.4962 5.21153 11.4697L5.15368 11.5374C5.17165 11.5137 5.19098 11.491 5.21153 11.4697L10.2671 6.21967Z"
+                                                  fill="#161616"/>
+                                        </svg>
+                                        <span>
+                                                                                                                            Назад
+                                                                                                                        </span>
+                                    </div>
+                                    <div class="sign__logo">
+                                        <img src="{% static 'img/png/logo.png' %}" alt="">
+                                    </div>
+                                </div>
+                                <h2 class="sign__title reg__title">
+                                    Регистрация
+                                </h2>
+                                <p class="reg__subtitle">
+                                    Осталось совсем немного, а теперь давайте знакомиться!
+                                </p>
+                                <label for="name" class="sign__label">
+                                    Имя*
+                                </label>
+                                {{ user_form.username }}
+<!--                                     {% for i in has_assignment_form.non_field_errors %}-->
+<!--                                        <p class="email__error ">-->
+<!--                                             empty{{ i.username }}-->
+<!--                                           </p>-->
+<!--                                    {% endfor %}-->
+                                <div>
+                                {% if user_form.errors %}
+
+                                           <p class="email__error ">
+                                               empty
+                                           </p>
+                                        {% endif %}</div>
+<!--                                 {% if user_form.non_field_errors %}-->
+<!--                                   <p class="email__error">-->
+<!--                                      Заполните поле-->
+<!--                                   </p>-->
+<!--                                {% endif %}-->
+                                <label for="surname" class="sign__label">
+                                    Фамилия*
+                                </label>
+<!--                                <input required type="text" id="surname" name="surname" class="sign__input required"-->
+<!--                                       placeholder="Ваша Фамилия">-->
+                                {{ user_form.last_name }}
+                                <label for="patronymic" class="sign__label">
+                                    Отчество
+                                </label>
+<!--                                <input type="text" id="patronymic" name="patronymic" class="sign__input"-->
+<!--                                       placeholder="Ваше Отчество">-->
+                                {{ user_form.before_last_name }}
+
+                                <div class="fields {% for e in user_form.phone_number %}
+                        {% if e %}error{% endif %}
+                        {% endfor %}">
+                                <label for="phone" class="sign__label">
+                                    Номер Телефона
+                                </label>
+                                {{ user_form.phone_number }}
+
+<!--                                            {% if user_form.phone_number.errors %}-->
+<!--                                           <p class="email__error ">-->
+<!--                                               Номер должен начинатся с +996-->
+<!--                                           </p>-->
+<!--                                        {% endif %}-->
+                                    {% if user_form.phone_number %}
+                                   <p class="email__error">
+                                      Пароли не совпадают
+                                   </p>
+                                {% endif %}
+                                </div>
+                                 <label for="telegram" class="sign__label">
+                                    Телеграм
+                                </label>
+                                {{ user_form.telegram }}
+
+
+                                <button class="sign__btn">
+                                    Следующий шаг
+                                </button>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="sign__head">
+                                    <div class="reg__prev">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M10.2671 6.21967C10.5491 5.92678 11.0064 5.92678 11.2885 6.21967C11.5705 6.51256 11.5705 6.98744 11.2885 7.28033L7.46567 11.25H17.2778C17.6482 11.25 17.9534 11.5395 17.9951 11.9125L18 12C18 12.4142 17.6766 12.75 17.2778 12.75H7.46567L11.2885 16.7197C11.5488 16.99 11.5688 17.4155 11.3485 17.7097L11.2885 17.7803C11.0064 18.0732 10.5491 18.0732 10.2671 17.7803L5.21153 12.5303L5.15866 12.4691C5.15699 12.4669 5.15533 12.4647 5.15368 12.4626C5.14971 12.4574 5.14571 12.452 5.1418 12.4465C5.12891 12.4283 5.1168 12.4097 5.10549 12.3905C5.10011 12.3815 5.09497 12.3723 5.09004 12.363C5.08218 12.3482 5.07466 12.3329 5.06764 12.3173C5.06188 12.3046 5.05648 12.2916 5.05144 12.2785C5.04573 12.2637 5.04053 12.2488 5.03578 12.2338C5.0323 12.2226 5.02896 12.2111 5.02589 12.1995C5.02155 12.1833 5.0178 12.1671 5.01456 12.1506C5.01206 12.1375 5.00984 12.1245 5.00796 12.1113C5.00272 12.0753 5 12.038 5 12L5.00286 12.0669C5.00137 12.0495 5.00046 12.032 5.00013 12.0145L5 12C5 11.9952 5.00004 11.9904 5.00013 11.9856C5.00043 11.9685 5.00135 11.9508 5.00286 11.9331C5.00416 11.9176 5.00586 11.9029 5.00796 11.8883C5.00984 11.8755 5.01206 11.8625 5.01462 11.8495C5.0178 11.8329 5.02155 11.8167 5.0258 11.8006C5.02896 11.7889 5.0323 11.7774 5.03592 11.7659C5.04053 11.7512 5.04573 11.7363 5.05135 11.7217C5.05648 11.7084 5.06188 11.6954 5.06765 11.6826C5.07466 11.6671 5.08218 11.6518 5.09019 11.6368C5.09497 11.6277 5.10011 11.6185 5.10544 11.6095C5.1168 11.5903 5.12891 11.5717 5.14178 11.5536C5.16273 11.5243 5.18597 11.4962 5.21153 11.4697L5.15368 11.5374C5.17165 11.5137 5.19098 11.491 5.21153 11.4697L10.2671 6.21967Z"
+                                                  fill="#161616"/>
+                                        </svg>
+                                        <span>
+                                                                                                                            Назад
+                                                                                                                        </span>
+                                    </div>
+                                    <div class="sign__logo">
+                                        <img src="{% static 'img/png/logo.png' %}" alt="">
+                                    </div>
+                                </div>
+                                <h2 class="sign__title reg__title">
+                                    Регистрация
+                                </h2>
+                                <p class="reg__subtitle">
+                                    Нам будет нужен ваш адрес чтобы доставить посылку
+                                </p>
+                                <label for="city" class="sign__label">
+                                    Город*
+                                </label>
+<!--                                <input type="text" id="city" name="city" class="sign__input required"-->
+<!--                                       placeholder="Ваш город" required>-->
+                                {{ user_form.city }}
+                                <label for="address" class="sign__label">
+                                    Адрес проживания*
+                                </label>
+<!--                                <input type="text" id="address" name="address" class="sign__input required"-->
+<!--                                       placeholder="Адрес фактического проживания" required>-->
+                                {{ user_form.address_living }}
+                                <label for="apartment" class="sign__label">
+                                    Дом*
+                                </label>
+<!--                                <input type="text" id="apartment" name="apartment" class="sign__input required"-->
+<!--                                       placeholder="Например Третий" required>-->
+                                {{ user_form.number_of_address }}
+                                <label for="postcode" class="sign__label">
+                                    Почтовый индекс*
+                                </label>
+<!--                                <input type="text" id="postcode" name="postcode" class="sign__input required"-->
+<!--                                       placeholder="Ваш почтовый индекс" required>-->
+                                {{ user_form.postal_code }}
+                                <button class="sign__btn" >
+                                    Следующий шаг
+                                </button>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="sign__head">
+                                    <div class="reg__prev">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M10.2671 6.21967C10.5491 5.92678 11.0064 5.92678 11.2885 6.21967C11.5705 6.51256 11.5705 6.98744 11.2885 7.28033L7.46567 11.25H17.2778C17.6482 11.25 17.9534 11.5395 17.9951 11.9125L18 12C18 12.4142 17.6766 12.75 17.2778 12.75H7.46567L11.2885 16.7197C11.5488 16.99 11.5688 17.4155 11.3485 17.7097L11.2885 17.7803C11.0064 18.0732 10.5491 18.0732 10.2671 17.7803L5.21153 12.5303L5.15866 12.4691C5.15699 12.4669 5.15533 12.4647 5.15368 12.4626C5.14971 12.4574 5.14571 12.452 5.1418 12.4465C5.12891 12.4283 5.1168 12.4097 5.10549 12.3905C5.10011 12.3815 5.09497 12.3723 5.09004 12.363C5.08218 12.3482 5.07466 12.3329 5.06764 12.3173C5.06188 12.3046 5.05648 12.2916 5.05144 12.2785C5.04573 12.2637 5.04053 12.2488 5.03578 12.2338C5.0323 12.2226 5.02896 12.2111 5.02589 12.1995C5.02155 12.1833 5.0178 12.1671 5.01456 12.1506C5.01206 12.1375 5.00984 12.1245 5.00796 12.1113C5.00272 12.0753 5 12.038 5 12L5.00286 12.0669C5.00137 12.0495 5.00046 12.032 5.00013 12.0145L5 12C5 11.9952 5.00004 11.9904 5.00013 11.9856C5.00043 11.9685 5.00135 11.9508 5.00286 11.9331C5.00416 11.9176 5.00586 11.9029 5.00796 11.8883C5.00984 11.8755 5.01206 11.8625 5.01462 11.8495C5.0178 11.8329 5.02155 11.8167 5.0258 11.8006C5.02896 11.7889 5.0323 11.7774 5.03592 11.7659C5.04053 11.7512 5.04573 11.7363 5.05135 11.7217C5.05648 11.7084 5.06188 11.6954 5.06765 11.6826C5.07466 11.6671 5.08218 11.6518 5.09019 11.6368C5.09497 11.6277 5.10011 11.6185 5.10544 11.6095C5.1168 11.5903 5.12891 11.5717 5.14178 11.5536C5.16273 11.5243 5.18597 11.4962 5.21153 11.4697L5.15368 11.5374C5.17165 11.5137 5.19098 11.491 5.21153 11.4697L10.2671 6.21967Z"
+                                                  fill="#161616"/>
+                                        </svg>
+                                        <span>
+                                                                                                Назад
+                                                                                            </span>
+                                    </div>
+                                    <div class="sign__logo">
+                                        <img src="{% static 'img/png/logo.png' %}" alt="">
+                                    </div>
+                                </div>
+                                <h2 class="sign__title reg__title">
+                                    Регистрация
+                                </h2>
+                                <p class="reg__subtitle">
+                                    Осталось совсем немного!
+                                    Последние 2 пункта.
+                                </p>
+                                <label for="scan-out" class="sign__label">
+                                    Скан паспорта (Внешняя часть)
+                                </label>
+                                <div class="file__input-wrap">
+                                    <input type="file" id="scan-out" name="" required accept="image/*">
+                                    <input type="text" class="sign__input file__upload required"
+                                           placeholder="Перенсите файл сюда" readonly>
+                                    <button type="button" class="file__icon">
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <g clip-path="url(#clip0)">
+                                                <path d="M14.9367 2.69627C14.2499 2.00945 13.3368 1.63123 12.3655 1.63123C11.3942 1.63123 10.4811 2.00945 9.79427 2.69627L4.06223 8.42826C3.21159 9.2789 3.21159 10.663 4.06228 11.5137C4.91297 12.3644 6.29712 12.3643 7.14776 11.5136L10.9222 7.73922C11.2062 7.4552 11.2062 6.99476 10.9222 6.71074C10.6382 6.42672 10.1777 6.42672 9.89371 6.71074L6.11928 10.4852C5.83575 10.7688 5.37433 10.7688 5.09075 10.4852C4.80718 10.2016 4.80718 9.74022 5.09071 9.45669L10.8228 3.72479C11.2349 3.31273 11.7827 3.08578 12.3655 3.08578C12.9483 3.08578 13.4961 3.31273 13.9082 3.72479C14.7588 4.57548 14.7589 5.95959 13.9083 6.81028L7.66202 13.0564C6.24417 14.4741 3.93729 14.4741 2.51958 13.0564C1.83277 12.3696 1.4545 11.4565 1.4545 10.4852C1.4545 9.51395 1.83277 8.60077 2.51958 7.91395L8.7657 1.66774C9.04971 1.38373 9.04971 0.923279 8.7657 0.639263C8.48173 0.355296 8.02124 0.355247 7.73722 0.639263L1.49111 6.88547C0.529535 7.847 0 9.12541 0 10.4852C0 11.845 0.529535 13.1234 1.49111 14.0849C2.48366 15.0775 3.78699 15.5737 5.09075 15.5735C6.39423 15.5735 7.69814 15.0772 8.6905 14.0849L14.9368 7.83871C16.3545 6.42091 16.3544 4.11407 14.9367 2.69627Z"
+                                                      fill="#1D1D1D"/>
+                                            </g>
+                                            <defs>
+                                                <clipPath id="clip0">
+                                                    <rect width="16" height="16" fill="white"/>
+                                                </clipPath>
+                                            </defs>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <label for="scan-in" class="sign__label">
+                                    Скан паспорта (Внутреняя часть)
+                                </label>
+                                <div class="file__input-wrap">
+                                    <input type="file" id="scan-in" name="" required accept="image/*">
+                                    <input type="text" class="sign__input file__upload required"
+                                           placeholder="Перенсите файл сюда" readonly>
+                                    <button type="button" class="file__icon">
+                                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <g clip-path="url(#clip0)">
+                                                <path d="M14.9367 2.69627C14.2499 2.00945 13.3368 1.63123 12.3655 1.63123C11.3942 1.63123 10.4811 2.00945 9.79427 2.69627L4.06223 8.42826C3.21159 9.2789 3.21159 10.663 4.06228 11.5137C4.91297 12.3644 6.29712 12.3643 7.14776 11.5136L10.9222 7.73922C11.2062 7.4552 11.2062 6.99476 10.9222 6.71074C10.6382 6.42672 10.1777 6.42672 9.89371 6.71074L6.11928 10.4852C5.83575 10.7688 5.37433 10.7688 5.09075 10.4852C4.80718 10.2016 4.80718 9.74022 5.09071 9.45669L10.8228 3.72479C11.2349 3.31273 11.7827 3.08578 12.3655 3.08578C12.9483 3.08578 13.4961 3.31273 13.9082 3.72479C14.7588 4.57548 14.7589 5.95959 13.9083 6.81028L7.66202 13.0564C6.24417 14.4741 3.93729 14.4741 2.51958 13.0564C1.83277 12.3696 1.4545 11.4565 1.4545 10.4852C1.4545 9.51395 1.83277 8.60077 2.51958 7.91395L8.7657 1.66774C9.04971 1.38373 9.04971 0.923279 8.7657 0.639263C8.48173 0.355296 8.02124 0.355247 7.73722 0.639263L1.49111 6.88547C0.529535 7.847 0 9.12541 0 10.4852C0 11.845 0.529535 13.1234 1.49111 14.0849C2.48366 15.0775 3.78699 15.5737 5.09075 15.5735C6.39423 15.5735 7.69814 15.0772 8.6905 14.0849L14.9368 7.83871C16.3545 6.42091 16.3544 4.11407 14.9367 2.69627Z"
+                                                      fill="#1D1D1D"/>
+                                            </g>
+                                            <defs>
+                                                <clipPath id="clip0">
+                                                    <rect width="16" height="16" fill="white"/>
+                                                </clipPath>
+                                            </defs>
+                                        </svg>
+                                    </button>
+                                </div>
+
+                                <div class="condition-wrap" >
+                                    <input type="checkbox" id="condition" checked required>
+                                    <label for="condition" class="condition">
+                                        <a href="{% url 'con' %}" style="color: blue;">Принимаю условия конфиденциальности
+                                        и политику безопасности</a>
+                                    </label>
+
+                                </div>
+                                <button  class="reg__submit" >
+                                    Начнем!
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class=" swiper-container reg__right-slider">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="sign__inner">
+                        <div class="title">
+                            <h3 class="main__title">
+                                Процесс нашей работы
+                            </h3>
+                            <p class="effect__title">
+                                Процесс нашей работы
+                            </p>
+                        </div>
+                        <h5>
+                            Выбирай товары в любых
+                            зарубежных магазинах!
+                        </h5>
+                        <p>
+                            Наши склады находятся в России, Китае, Европе и даже в США. Покупайте товары лучших и
+                            модных
+                            брендов
+                            с
+                            нами, ведь
+                            с нами дешевле
+                        </p>
+                        <img src="{% static 'img/png/process-pic1.png' %}" alt="">
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="sign__inner">
+                        <div class="title">
+                            <h3 class="main__title">
+                                Процесс нашей работы
+                            </h3>
+                            <p class="effect__title">
+                                Процесс нашей работы
+                            </p>
+                        </div>
+                        <h5>
+                            Выбирай товары в любых
+                            зарубежных магазинах!
+                        </h5>
+                        <p>
+                            Наши склады находятся в России, Китае, Европе и даже в США. Покупайте товары лучших и
+                            модных
+                            брендов
+                            с
+                            нами, ведь
+                            с нами дешевле
+                        </p>
+                        <img src="{% static 'img/png/process-pic2.png' %}" alt="">
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="sign__inner">
+                        <div class="title">
+                            <h3 class="main__title">
+                                Процесс нашей работы
+                            </h3>
+                            <p class="effect__title">
+                                Процесс нашей работы
+                            </p>
+                        </div>
+                        <h5>
+                            Выбирай товары в любых
+                            зарубежных магазинах!
+                        </h5>
+                        <p>
+                            Наши склады находятся в России, Китае, Европе и даже в США. Покупайте товары лучших и
+                            модных
+                            брендов
+                            с
+                            нами, ведь
+                            с нами дешевле
+                        </p>
+                        <img src="{% static 'img/png/process-pic3.png' %}" alt="">
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="sign__inner">
+                        <div class="title">
+                            <h3 class="main__title">
+                                Процесс нашей работы
+                            </h3>
+                            <p class="effect__title">
+                                Процесс нашей работы
+                            </p>
+                        </div>
+                        <h5>
+                            Выбирай товары в любых
+                            зарубежных магазинах!
+                        </h5>
+                        <p>
+                            Наши склады находятся в России, Китае, Европе и даже в США. Покупайте товары лучших и
+                            модных
+                            брендов
+                            с
+                            нами, ведь
+                            с нами дешевле
+                        </p>
+                        <img src="{% static 'img/png/process-pic4.png' %}" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}
+
+{% block scripts %}
+    <script>
+    sign__input
+    document.querySelector('#reg__from').addEventListener('submit',(e) => {
+    e.preventDefault();
+    const formData = Object.fromEntries(new FormData(e.target).entries());
+    console.log(formData,'asd')
+    })
+        if()
+    </script>
+    <script>
+        $(document).on('change keyup', '.required', function () {
+            var isValidInput = false;
+
+            $(".swiper-slide-active .required").each(function () {
+                if (this.value === '') {
+                    return isValidInput = false;
+                } else {
+                    isValidInput = true;
+                }
+            });
+            console.log(isValidInput)
+            $(this).siblings('.sign__btn').prop("disabled", !isValidInput);
+        })
+    </script>
+
+    <script>
+        $(function () {
+            var newSwiper = new Swiper('.registration-slider', {
+                navigation: {
+                    nextEl: '.sign__btn',
+                    prevEl: '.reg__prev',
+                },
+                spaceBetween: 300,
+            });
+            newSwiper.allowTouchMove = false
+
+            var swiper = new Swiper('.reg__right-slider', {
+                effect: 'fade',
+                navigation: {
+                    nextEl: '.sign__btn',
+                    prevEl: '.reg__prev',
+                },
+            });
+            swiper.allowTouchMove = false
+        })
+    </script>
+    <script>
+        $(function () {
+            $('.file__input-wrap input[type=file]').change(function () {
+                $(this).siblings('.file__upload').val(this.files[0].name);
+            });
+        })
+    </script>
+{% endblock %}

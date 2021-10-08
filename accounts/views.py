@@ -21,6 +21,7 @@ class RegisterViews(CreateView):
 def sign(request):
     if request.method == 'POST':
         form = SignForm(data=request.POST)
+        print(form)
         if form.is_valid():
             email = form.cleaned_data.get('email')
             password = form.cleaned_data.get('password')
