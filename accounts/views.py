@@ -3,9 +3,10 @@ from django.contrib.auth import login, authenticate, get_user_model
 from django.contrib.auth.views import LoginView
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.views import View
-from django.views.generic import CreateView, FormView
+from django.views.generic import CreateView, FormView, TemplateView
+from django.contrib.auth import login as auth_login
 
 from accounts import forms
 from accounts.forms import UserRegistrationForm, SignForm
@@ -18,19 +19,10 @@ class RegisterViews(CreateView):
     form_class = UserRegistrationForm
     success_url = reverse_lazy('home')
 
-def sign(request):
-    if request.method == 'POST':
-        form = SignForm(data=request.POST)
-        print(form)
-        if form.is_valid():
-            email = form.cleaned_data.get('email')
-            password = form.cleaned_data.get('password')
-            user = authenticate(username=email, password=password)
-            login(request, user)
-            return redirect('home')
-    else:
-        form = SignForm()
-    return render(request, 'pages/sign.html', {'form': form})
+class SignView(LoginView):
+    template_name = 'pages/sign.html'
+    form_class = SignForm
+    success_url = reverse_lazy('home')
 
 
 

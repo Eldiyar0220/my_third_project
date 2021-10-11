@@ -1,8 +1,11 @@
 from django import forms
-from django.contrib.auth import get_user, get_user_model, login
+from django.contrib.auth import get_user, get_user_model, login, authenticate
 from django.contrib.auth.hashers import check_password
 from django.contrib.auth.forms import UserCreationForm
 from django.core.validators import RegexValidator
+from django.http import HttpResponseRedirect
+from django.shortcuts import redirect
+from django.urls import reverse
 
 User = get_user_model()
 
@@ -51,21 +54,40 @@ class UserRegistrationForm(forms.ModelForm):
 
 
 class SignForm(forms.Form):
-    email = forms.EmailField(required=True, widget=forms.TextInput(attrs={ 'class': 'sign__input', 'placeholder': 'Email или ваша почта' }))
-    password = forms.CharField(required=True, widget=forms.PasswordInput(attrs={ 'class': 'sign__input', 'placeholder': 'Пароль!!' }))
+    email = forms.EmailField(widget=forms.TextInput(attrs={ 'class': 'sign__input', 'placeholder': 'Email или ваша почта' }))
+    password = forms.CharField(widget=forms.PasswordInput(attrs={ 'class': 'sign__input', 'placeholder': 'Пароль!!' }))
 
 
-
-    def clean(self, *args, **kwargs):
-        email = self.cleaned_data.get('email')
-        password = self.cleaned_data.get('password')
-        if email and password:
+    def clean_email(self):
+        data = self.cleaned_data
+        email = data['email']
+        if email:
             qs = User.objects.filter(email=email)
             if not qs.exists():
-                raise forms.ValidationError('Email не найден попробуйте снова!')
-            if not check_password(password, qs[0].password):
-                raise forms.ValidationError('Неверный пароль!')
-        return super().clean(*args, **kwargs)
+                raise forms.ValidationError('Email не найден попробуйте снова')
+        return email
+
+    def clean_password(self):
+        password = self.cleaned_data.get('password')
+        email = self.cleaned_data.get('email')
+        if password and email:
+            qs = User.objects.filter(email=email)[0]
+            if not check_password(password, qs.password):
+                raise forms.ValidationError('Неверный пароль')
+        return password
+
+    def get_user(self):
+        from django.contrib.auth import authenticate
+        return authenticate(
+            email=self.cleaned_data.get('email'),
+            password=self.cleaned_data.get('password'))
+
+    def __init__(self, *args, **kwargs):
+        self.request = kwargs.pop('request', None)
+        super().__init__(*args, **kwargs)
+
+
+
 
 
 

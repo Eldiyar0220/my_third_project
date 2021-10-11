@@ -47,9 +47,7 @@
     {% endfor %}
 </div>
                     </div>
-                    <div class="fields {% for e in form.non_field_errors %}
-                        {% if e %}error{% endif %}
-                        {% endfor %}">
+                    <div class="fields {% if form.password.errors %}error{% endif %}">
 {#                        Если пароль неправильный, добавить класс "error" на fields#}
 {#                        и раскомментировать forget__password #}
                         <label for="sign-password" class="sign__label">
@@ -59,31 +57,16 @@
 <!--                            <input required type="password" id="sign-password" class="sign__input"-->
 <!--                                   placeholder="Пароль">-->
                             {{ form.password }}
-                            <div>
-                                {% for key in form.non_field_errors %}
-                                <p class="email__error">
-                                    {{ key }}
-                                    {{ value }}
-                                </p>
-                                {% endfor %}
-                            </div>
+
                         <div class="sign__eye"></div>
+
                         </div>
-                        {% for e in form.non_field_errors %}
-                        {% if e %}
 
-
-
+                        {% if form.password.errors%}
                         <div style="" class="forget__password" data-micromodal-trigger="forget-password">
                             <span>Забыли пароль?</span>
                         </div>
-
                         {% endif %}
-                        {% endfor %}
-                             {% if form.email.errors %}
-
-                        {% endif %}
-
 
 
                     </div>
