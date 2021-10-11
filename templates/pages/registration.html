@@ -47,13 +47,14 @@
                                        </p>
                                         {% endfor %}
                                     </div>
-                                     
+
                                  </div>
                                 <div class="fields {% for e in form.non_field_errors %}{% if e %}error{% endif %}{% endfor %}">
                                 <label for="reg-password" class="sign__label">
                                     Ваш пароль
                                 </label>
                                 {{ form.password }}
+
                                 </div>
                                 <div class="fields {% for e in form.non_field_errors %}{% if e %}error{% endif %}{% endfor %}">
                                 <label class="sign__label">
@@ -103,9 +104,6 @@
 <!--                                <input required type="text" id="name" name="name" class="sign__input required"-->
 <!--                                       placeholder="Например Айбек">-->
                                 {{ form.username }}
-                                {% for key, value in form.errors.items %}
-                               {{ key }}{{ value }}
-                                {% endfor %}
                                 <label for="surname" class="sign__label">
                                     Фамилия*
                                 </label>
@@ -120,24 +118,31 @@
 <!--                                       placeholder="Ваше Отчество">-->
                                 {{ form.before_last_name }}
 
-
-       {% for field in form %}
-           {% for error in field.errors %}
-             <p class="email__error">
-                       {{ error }}
-                       </p>
-           {% endfor %}
-       {% endfor %}
-
                                 </div>
+                                <div class="fields {% if form.telegram.errors %}error{% endif %}">
                                 <label for="patronymic" class="sign__label">
                                     Телеграм
                                 </label>
                                 {{ form.telegram }}
+                                {% for error in form.telegram.errors %}
+                                       <p class="email__error">
+                                           {{ error }}
+                                       </p>
+                                {% endfor %}
+                                </div>
+                                <div class="fields {% if form.phone_number.errors %}error{% endif %}">
                                 <label for="patronymic" class="sign__label">
                                     Телефон номер
                                 </label>
                                 {{ form.phone_number }}
+
+                                 {% for error in form.phone_number.errors %}
+                                   <p class="email__error">
+                                       {{ error }}
+                                   </p>
+                                {% endfor %}
+                                </div>
+
                                 <button class="sign__btn" >
                                     Следующий шаг
                                 </button>
@@ -182,16 +187,26 @@
 <!--                                <input type="text" id="apartment" name="apartment" class="sign__input required"-->
 <!--                                       placeholder="Например Третий" required>-->
                                 {{ form.number_of_address }}
+                                <div class="fields {% if form.postal_code.errors %}error{% endif %}">
                                 <label for="postcode" class="sign__label">
                                     Почтовый индекс*
                                 </label>
 <!--                                <input type="text" id="postcode" name="postcode" class="sign__input required"-->
 <!--                                       placeholder="Ваш почтовый индекс" required>-->
                                 {{ form.postal_code }}
+
+                                     {% for error in form.postal_code.errors %}
+                                       <p class="email__error">
+                                           {{ error }}
+                                       </p>
+                                    {% endfor %}
+                                </div>
+
                                 <button class="sign__btn">
                                     Следующий шаг
                                 </button>
                             </div>
+
                             <div class="swiper-slide">
                                 <div class="sign__head">
                                     <div class="reg__prev">
@@ -267,7 +282,7 @@
                                         и политику безопасности
                                     </label>
                                 </div>
-                                <button type="submit" class="reg__submit">
+                                <button type="submit" class="reg__submit send">
                                     Начнем!
                                 </button>
                             </div>
@@ -276,6 +291,38 @@
                 </form>
             </div>
         </div>
+
+
+          <div class="modal micromodal-slide" id="edit-profile-success"
+             aria-hidden="true">
+            <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+                <div class="modal__container" role="dialog" aria-modal="true">
+                    <div class="area__modal">
+                        <div class="modal__close" data-micromodal-close></div>
+                        <div class="modal__inner">
+                            <img src="{% static 'img/png/edit-profile.png' %}"
+                                 alt="">
+                            <p class="success__text">
+                                Ваш профиль успешно
+                                изменен!
+                            </p>
+
+                            <button type="submit" class="personal__btn modal__btn"
+                                    data-micromodal-close>
+                                Хорошо
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
         <div class=" swiper-container reg__right-slider">
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
@@ -387,6 +434,13 @@
 {% endblock %}
 
 {% block scripts %}
+<script>
+    $('.send').on('submit', function (){
+        MicroModal.show('edit-profile-success');
+        })
+
+
+</script>
     <script>
         $(document).on('change keyup', '.required', function () {
             var isValidInput = false;

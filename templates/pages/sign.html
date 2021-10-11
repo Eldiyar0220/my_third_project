@@ -70,7 +70,7 @@
 
 
                     </div>
-                    <button type="submit" class="sign__btn">
+                    <button type="submit" class="sign__btn" id="send">
                         Войти
                     </button>
                 </form>
@@ -83,6 +83,37 @@
             <img src="{% static 'img/png/delivery.png' %}" alt="">
         </div>
     </div>
+
+          <div class="modal micromodal-slide" id="edit-profile-success"
+             aria-hidden="true">
+            <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+                <div class="modal__container" role="dialog" aria-modal="true">
+                    <div class="area__modal">
+                        <div class="modal__close" data-micromodal-close></div>
+                        <div class="modal__inner">
+                            <img src="{% static 'img/png/edit-profile.png' %}"
+                                 alt="">
+                            <p class="success__text">
+                                Ваш профиль успешно
+                                изменен!
+                            </p>
+
+                            <button type="submit" class="personal__btn modal__btn"
+                                    data-micromodal-close>
+                                Хорошо
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
 
                     {#    модалка забыли пароль  #}
     <div class="modal micromodal-slide" id="forget-password" aria-hidden="true">
@@ -115,6 +146,11 @@
                         </button>
                     </form>
                 </div>
+
+
+
+
+
 
                                     {#    модалка успешного отправления  #}
                 <div class="area__modal verify-modal" id="email-verify-modal" style="display: none; flex-direction: column; align-items: center; text-align: center;">
@@ -196,6 +232,10 @@ form.onsubmit = function(){
     })
 </script>
 <script>
-      MicroModal.show('edit-profile-success');
+ $('#send').on('click', function (){
+        MicroModal.show('edit-profile-success');
+        })
+
+
 </script>
 {% endblock %}

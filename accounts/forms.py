@@ -2,12 +2,24 @@ from django import forms
 from django.contrib.auth import get_user, get_user_model, login, authenticate
 from django.contrib.auth.hashers import check_password
 from django.contrib.auth.forms import UserCreationForm
+from django.core.mail import send_mail
 from django.core.validators import RegexValidator
 from django.http import HttpResponseRedirect
 from django.shortcuts import redirect
+from django.template import context
+from django.template.loader import render_to_string
 from django.urls import reverse
 
 User = get_user_model()
+
+# def send_activation_mail(email):
+#     message = f'http://127.0.0.1:8000/account/activate/'
+#     send_mail('Активация аккаунта', message, 'test@gmail.com', [email])
+
+def send_activation_mail(email, activation_code):
+    message = f'http://127.0.0.1:8005/accounts/activation/?u={activation_code}'
+    send_mail('Активация аккаунта', message, 'test@gmail.com', [email])
+
 
 class UserRegistrationForm(forms.ModelForm):
     email = forms.EmailField(widget=forms.TextInput(attrs={'class':'sign__input', 'placeholder':'Email или ваша почта!'}))
@@ -19,12 +31,30 @@ class UserRegistrationForm(forms.ModelForm):
     address_living = forms.CharField(widget=forms.TextInput(attrs={'class':'sign__input','placeholder':'Аддрес проживание'}))
     city = forms.CharField(widget=forms.TextInput(attrs={'class':'sign__input','placeholder':'Город'}))
     number_of_address = forms.CharField(widget=forms.NumberInput(attrs={'class':'sign__input','placeholder':'номер'}))
-    postal_code = forms.CharField(widget=forms.NumberInput(attrs={'class':'sign__input','placeholder':'индекс'}))
+
+    postal_code_message = 'Должен быть в формате: XXX XXX'
+    postal_code_regex = RegexValidator(
+        regex=r'^\d{6}$',
+        message=postal_code_message
+    )
+
+    postal_code = forms.CharField(validators=[postal_code_regex],max_length=6, widget=forms.NumberInput(attrs={'class':'sign__input','placeholder':'индекс'}))
     # passport_out = forms.CharField(required=True, widget=forms.NumberInput(attrs={'type': 'file', 'class': 'sign__input ','name': '','accept': 'image/*'}))
     # passport_in = forms.ImageField(required=True, widget=forms.FileInput(attrs={'type': 'file','class': 'sign__input file__upload','id': 'scan-in','name': '','accept': 'image/*'}))
 
-    phone_number = forms.CharField(required=True,widget=forms.TextInput(attrs={'class':'sign__input','placeholder':'Ваш номер телефона'}))
-    telegram = forms.CharField(required=True,widget=forms.TextInput(attrs={'class':'sign__input','placeholder':'@Nickname'}))
+    phone_message = 'Формат номера: 996 999 999 999'
+    phone_regex = RegexValidator(
+        regex="(996)",
+        message=phone_message
+    )
+    phone_number = forms.CharField(validators=[phone_regex],required=True,widget=forms.TextInput(attrs={'class':'sign__input','placeholder':'Ваш номер телефона'}))
+
+    telegram_message = 'должно начинатся с @'
+    telegram_regex = RegexValidator(
+        regex="(@)",
+        message=telegram_message
+    )
+    telegram = forms.CharField(validators=[telegram_regex],required=True,widget=forms.TextInput(attrs={'class':'sign__input','placeholder':'@Nickname'}))
 
     class Meta:
         model = User
@@ -46,17 +76,17 @@ class UserRegistrationForm(forms.ModelForm):
             raise forms.ValidationError('Пароли не совпадает!')
         return self.cleaned_data
 
-    def clean_pass(self):
-        if UserRegistrationForm == '':
-            raise forms.ValidationError('asdfasdfsadf')
-        return self.cleaned_data
+    def save(self):
+        user = User.objects.create(**self.cleaned_data)
+        user.create_activation_code()
+        send_activation_mail(user.email, user.activation_code)
+        return user
 
 
 
 class SignForm(forms.Form):
     email = forms.EmailField(widget=forms.TextInput(attrs={ 'class': 'sign__input', 'placeholder': 'Email или ваша почта' }))
     password = forms.CharField(widget=forms.PasswordInput(attrs={ 'class': 'sign__input', 'placeholder': 'Пароль!!' }))
-
 
     def clean_email(self):
         data = self.cleaned_data
