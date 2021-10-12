@@ -17,7 +17,7 @@ User = get_user_model()
 #     send_mail('Активация аккаунта', message, 'test@gmail.com', [email])
 
 def send_activation_mail(email, activation_code):
-    message = f'http://127.0.0.1:8005/accounts/activation/?u={activation_code}'
+    message = f'http://127.0.0.1:8000/accounts/activation/?u={activation_code}'
     send_mail('Активация аккаунта', message, 'test@gmail.com', [email])
 
 
