@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth import get_user, get_user_model, login, authenticate
 from django.contrib.auth.hashers import check_password
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.password_validation import validate_password
 from django.core.mail import send_mail
 from django.core.validators import RegexValidator
 from django.http import HttpResponseRedirect
@@ -70,11 +71,16 @@ class UserRegistrationForm(forms.ModelForm):
         return email
 
     def clean(self):
+        data = self.cleaned_data
+        if data['password'] != data['password_confirm']:
+            raise forms.ValidationError('Пароли не совпадают!!')
         password = self.cleaned_data.get('password')
-        password_confirm = self.cleaned_data.pop('password_confirm')
-        if not password == password_confirm:
-            raise forms.ValidationError('Пароли не совпадает!')
+        if validate_password(password):
+            raise forms.ValidationError('Пароли не совпа')
         return self.cleaned_data
+
+
+
 
     def save(self):
         user = User.objects.create(**self.cleaned_data)
@@ -83,10 +89,9 @@ class UserRegistrationForm(forms.ModelForm):
         return user
 
 
-
 class SignForm(forms.Form):
     email = forms.EmailField(widget=forms.TextInput(attrs={ 'class': 'sign__input', 'placeholder': 'Email или ваша почта' }))
-    password = forms.CharField(widget=forms.PasswordInput(attrs={ 'class': 'sign__input', 'placeholder': 'Пароль!!' }))
+    password = forms.CharField(min_length=8,widget=forms.PasswordInput(attrs={ 'class': 'sign__input', 'placeholder': 'Пароль!!' }))
 
     def clean_email(self):
         data = self.cleaned_data
@@ -117,6 +122,33 @@ class SignForm(forms.Form):
         super().__init__(*args, **kwargs)
 
 
+
+class ResetForm(forms.Form):
+
+    password = forms.CharField(required=True, widget=forms.PasswordInput(attrs={
+        'id': 'sign-password',
+        'class': 'sign__input',
+        'placeholder': 'Ваш новый пароль'
+    }))
+
+    password2 = forms.CharField(required=True, widget=forms.PasswordInput(attrs={
+        'id': 'sign-password',
+        'class': 'sign__input',
+        'placeholder': 'Повторите новый пароль'
+    }))
+
+    def clean_password2(self):
+        data = self.cleaned_data
+        if data['password'] != data['password2']:
+            raise forms.ValidationError('Пароли не совпадают')
+        return data['password2']
+
+    def clean(self):
+        data = self.cleaned_data
+        password = data['password']
+        if validate_password(password):
+            raise forms.ValidationError('Введите более защищённый пароль')
+        return super().clean()
 
 
 

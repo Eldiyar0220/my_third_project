@@ -62,12 +62,13 @@
                                 </label>
                                         {{ form.password_confirm }}
                                 <div>
-                                        {% for key in form.non_field_errors %}
+                                    {% for key in form.non_field_errors %}
                                         <p class="email__error">
-                                          {{ key }}
-                                       </p>
-                                        {% endfor %}
-                                    </div>
+                                           {{ key }}
+                                        </p>
+                                    {% endfor %}
+                                </div>
+
                                 </div>
                                 <button class="sign__btn">
                                     Следующий шаг
