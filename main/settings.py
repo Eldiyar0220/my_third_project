@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'news',
     'accounts',
     'parcels',
+    'profile',
 
 ]
 

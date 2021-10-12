@@ -71,16 +71,24 @@ class UserRegistrationForm(forms.ModelForm):
         return email
 
     def clean(self):
-        data = self.cleaned_data
-        if data['password'] != data['password_confirm']:
-            raise forms.ValidationError('Пароли не совпадают!!')
         password = self.cleaned_data.get('password')
+        password_confirm = self.cleaned_data.pop('password_confirm')
+        if password != password_confirm:
+            raise forms.ValidationError('Пароли не совпадают')
+        password = self.cleaned_data['password']
         if validate_password(password):
             raise forms.ValidationError('Пароли не совпа')
         return self.cleaned_data
 
 
-
+    # def clean(self):
+    #     data = self.cleaned_data
+    #     if data['password'] != data['password_confirm']:
+    #         raise forms.ValidationError('Пароли не совпадают!!')
+    #     password = data['password']
+    #     if validate_password(password):
+    #         raise forms.ValidationError('Пароли не совпа')
+    #     return self.cleaned_data
 
     def save(self):
         user = User.objects.create(**self.cleaned_data)

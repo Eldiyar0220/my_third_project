@@ -22,15 +22,16 @@
                             <label for="email">
                                 Ваш электронный адрес
                             </label>
+
                             <input type="text" id="email"
-                                   placeholder="Ваш электронный адрес" required>
+                                   placeholder="Ваш электронный адрес" value="{{ user.email }}" required>
                         </div>
 
                         <div>
                             <label for="name">
                                 Имя
                             </label>
-                            <input type="text" id="name" placeholder="Имя"
+                            <input type="text" id="name" placeholder="Имя" value="{{ user.username }}"
                                    required>
                         </div>
 
@@ -39,7 +40,7 @@
                                 Фамилия
                             </label>
                             <input type="text" id="surname"
-                                   placeholder="Фамилия" required>
+                                   placeholder="Фамилия" value="{{ user.last_name }}" required>
                         </div>
 
                         <div>
@@ -47,7 +48,7 @@
                                 Отчество
                             </label>
                             <input type="text" id="patronymic"
-                                   placeholder="Отчество">
+                                   placeholder="Отчество" value="{{ user.before_last_name }}">
                         </div>
 
                         <div>
@@ -55,7 +56,7 @@
                                 Адрес проживания
                             </label>
                             <input type="text" id="address"
-                                   placeholder="Адрес проживания" required>
+                                   placeholder="Адрес проживания" value="{{ user.address_living }}" required>
                         </div>
 
                         <div class="personal__flex">
@@ -63,14 +64,14 @@
                                 <label for="city">
                                     Город
                                 </label>
-                                <input type="text" id="city" placeholder="Город"
+                                <input type="text" id="city" placeholder="Город" value="{{ user.city }}"
                                        required>
                             </div>
                             <div>
                                 <label for="house">
                                     Дом
                                 </label>
-                                <input type="text" id="house" placeholder="Дом"
+                                <input type="text" id="house" placeholder="Дом" value="{{ user.number_of_address }}"
                                        required>
                             </div>
                         </div>
@@ -80,7 +81,7 @@
                                 Почтовый индекс*
                             </label>
                             <input type="text" id="postcode"
-                                   placeholder="Почтовый индекс*" required>
+                                   placeholder="Почтовый индекс*" value="{{ user.postal_code }}" required>
                         </div>
 
                         <div>

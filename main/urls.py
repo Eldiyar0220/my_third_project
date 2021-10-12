@@ -20,6 +20,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('news.urls')),
     path('accounts/', include('accounts.urls')),
+    path('profile/', include('profile.urls'))
 
 ]
 handler404 = "main.errors.handle_not_found"
