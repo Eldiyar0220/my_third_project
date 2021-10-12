@@ -22,3 +22,4 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
 
 ]
+handler404 = "main.errors.handle_not_found"

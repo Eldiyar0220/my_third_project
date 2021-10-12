@@ -84,35 +84,6 @@
         </div>
     </div>
 
-          <div class="modal micromodal-slide" id="edit-profile-success"
-             aria-hidden="true">
-            <div class="modal__overlay" tabindex="-1" data-micromodal-close>
-                <div class="modal__container" role="dialog" aria-modal="true">
-                    <div class="area__modal">
-                        <div class="modal__close" data-micromodal-close></div>
-                        <div class="modal__inner">
-                            <img src="{% static 'img/png/edit-profile.png' %}"
-                                 alt="">
-                            <p class="success__text">
-                                Ваш профиль успешно
-                                изменен!
-                            </p>
-
-                            <button type="submit" class="personal__btn modal__btn"
-                                    data-micromodal-close>
-                                Хорошо
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-
-
-
-
 
 
                     {#    модалка забыли пароль  #}
@@ -232,9 +203,9 @@ form.onsubmit = function(){
     })
 </script>
 <script>
- $('#send').on('click', function (){
-        MicroModal.show('edit-profile-success');
-        })
+<!-- $('#send').on('click', function (){-->
+<!--        MicroModal.show('edit-profile-success');-->
+<!--        })-->
 
 
 </script>

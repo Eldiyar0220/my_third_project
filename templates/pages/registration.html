@@ -282,7 +282,7 @@
                                         и политику безопасности
                                     </label>
                                 </div>
-                                <button type="submit" class="reg__submit send">
+                                <button type="submit" class="reg__submit send" id="send">
                                     Начнем!
                                 </button>
                             </div>
@@ -436,8 +436,13 @@
 {% block scripts %}
 <script>
     $('.send').on('submit', function (){
+
         MicroModal.show('edit-profile-success');
-        })
+
+
+
+            })
+
 
 
 </script>
