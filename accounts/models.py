@@ -37,7 +37,7 @@ class User(AbstractBaseUser):
     city = models.CharField(max_length=150)
     address_living = models.CharField(max_length=250)
     number_of_address = models.CharField(max_length=13)
-    postal_code = models.CharField(max_length=150)
+    postal_code = models.CharField(max_length=150, null=False, blank=False)
     telegram = models.CharField(max_length=150)
     activation_code = models.CharField(max_length=8, blank=True)
 
@@ -46,6 +46,7 @@ class User(AbstractBaseUser):
     # passport_in = models.ImageField(upload_to='scan_in')
     is_active = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
+    good = models.BooleanField(default=False)
 
 
     objects = UserManager()

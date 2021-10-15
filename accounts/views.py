@@ -36,6 +36,12 @@ class ActivationView(View):
         else:
             return render(request, 'pages/sign.html', status=404)
 
+class art(View):
+    def get(self, request):
+        User.is_active = False
+        User.save()
+        return render(request, 'pages/sign.html')
+
 class SignView(LoginView):
     template_name = 'pages/sign.html'
     form_class = SignForm

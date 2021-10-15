@@ -83,6 +83,21 @@
                             <input type="text" id="postcode"
                                    placeholder="Почтовый индекс*" value="{{ user.postal_code }}" required>
                         </div>
+                        <div>
+                            <label for="postcode">
+                                Телеграм
+                            </label>
+                            <input type="text" id="postcode"
+                                   placeholder="Почтовый индекс*" value="{{ user.telegram }}" required>
+                            </div>
+                            <div>
+                            <label for="postcode">
+                                Телефон номер
+                            </label>
+                            <input type="text" id="postcode"
+                                   placeholder="Почтовый индекс*" value="{{ user.phone_number }}" required>
+                            </div>
+
 
                         <div>
                             <label for="scan-out" class="sign__label">
@@ -149,7 +164,7 @@
                         </button>
                     </div>
                 </form>
-                <div class="personal__instrument-wrap">
+                <a href="{% url 'change-profile' %}"><div class="personal__instrument-wrap">
                     <div class="personal__instrument">
                         <div class="instrument__item edit__profile-btn">
                             <svg width="16" height="16" viewBox="0 0 16 16"
@@ -160,7 +175,7 @@
                             <span>
                         Изменить профиль
                     </span>
-                        </div>
+                        </div></a>
                         <div class="instrument__item"
                              data-micromodal-trigger="change-password">
                             <svg width="16" height="16" viewBox="0 0 16 16"

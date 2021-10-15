@@ -111,7 +111,7 @@
 <!--                                <input required type="text" id="surname" name="surname" class="sign__input required"-->
 <!--                                       placeholder="Ваша Фамилия">-->
                                 {{ form.last_name }}
-                                <div class="fields {% for e in form.non_field_errors %}{% if e %}error{% endif %}{% endfor %}">
+                                <div >
                                 <label for="patronymic" class="sign__label">
                                     Отчество
                                 </label>
@@ -189,7 +189,7 @@
 <!--                                       placeholder="Например Третий" required>-->
                                 {{ form.number_of_address }}
                                 <div class="fields {% if form.postal_code.errors %}error{% endif %}">
-                                <label for="postcode" class="sign__label">
+                                <label class="sign__label">
                                     Почтовый индекс*
                                 </label>
 <!--                                <input type="text" id="postcode" name="postcode" class="sign__input required"-->

@@ -1,0 +1,277 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title_page %}{% endblock %}
+
+{% block style-libs %}{% endblock %}
+
+{% block style %}{% endblock %}
+
+{% block content %}
+
+ <div class="parcel__flex">
+        {% include 'components/sidebar-menu/sidebar-menu.html' %}
+        <div class="container">
+            <div class="parcel__content personal__content">
+                <form action="" method="post" id="edit-profile-form">
+
+                    {% csrf_token %}
+                    <div class="personal__box">
+                        <h2 class="personal__title">
+                            Редактирование профиля
+                            {{ edit.id }}
+                        </h2>
+                        <div class="fields {% for e in edit.email.errors %}{% if e %}error{% endif %}{% endfor %}">
+                           <label for="sign-email" class="sign__label">
+                                Ваш электронный адрес
+                            </label>
+                            <span>{{ edit.email }}</span>
+                        <div>
+                            {% for key in edit.errors.email %}
+                                   <p class="email__error">
+                                       {{ key }}
+                                   </p>
+                                    {% endfor %}
+                                </div>
+
+                            </div>
+<div>
+                            <label for="name">
+                                Имя
+                            </label>
+                                {{ edit.username }}
+                        </div>
+
+                        <div>
+                            <label for="surname">
+                                Фамилия
+                            </label>
+<!--                            <input type="text" id="surname"-->
+<!--                                   placeholder="Фамилия" required value="{{ request.user.last_name }}">-->
+                                {{ edit.last_name }}
+                        </div>
+
+                        <div>
+                            <label for="patronymic">
+                                Отчество
+                            </label>
+<!--                            <input type="text" id="patronymic"-->
+<!--                                   placeholder="Отчество">-->
+                            {{ edit.before_last_name }}
+
+                        </div>
+
+                        <div>
+                            <label for="address">
+                                Адрес проживания
+
+                            </label>
+<!--                            <input type="text" id="address" value="{{ request.user.address_living }}"-->
+<!--                                   placeholder="Адрес проживания" required>-->
+                            {{ edit.address_living }}
+                        </div>
+
+                        <div class="personal__flex">
+                            <div>
+                                <label for="city">
+                                    Город
+
+                                </label>
+<!--                                <input type="text" id="city"  placeholder="Город"-->
+<!--                                       required>-->
+                                {{ edit.city }}
+                            </div>
+                            <div>
+                                <label for="house">
+                                    Дом
+                                </label>
+<!--                                <input type="text" id="house" value="{{ request.user.number_of_address }}" placeholder="Дом"-->
+<!--                                       required>-->
+                                {{ edit.number_of_address }}
+                            </div>
+                        </div>
+
+                        <div class="fields {% if edit.postal_code.errors %}error{% endif %}">
+                            <label for="postcode" class="sign__label">
+                                Почтовый индекс*
+                            </label>
+                            {{ edit.postal_code }}
+
+                            {% for error in edit.postal_code.errors %}
+                                       <p class="email__error">
+                                           {{ error }}
+                                       </p>
+                                    {% endfor %}
+                        </div>
+                        <div class="fields {% if edit.telegram.errors %}error{% endif %}">
+                            <label  class="sign__label">
+                                Телеграм
+                            </label>
+                            {{ edit.telegram }}
+                             {% for error in edit.telegram.errors %}
+                                   <p class="email__error">
+                                       {{ error }}
+                                   </p>
+                                {% endfor %}
+
+                        </div>
+
+                         <div class="fields {% if edit.phone_number.errors %}error{% endif %}">
+                            <label for="postcode" class="sign__label">
+                                Номер телефона*
+                            </label>
+                             {{ edit.phone_number }}
+                             {% for error in edit.phone_number.errors %}
+                                   <p class="email__error">
+                                       {{ error }}
+                                   </p>
+                                {% endfor %}
+                        </div>
+
+                        <div>
+                            <label for="scan-out" class="sign__label">
+                                Скан паспорта (Внешняя часть)
+                            </label>
+                            <div class="file__input-wrap">
+                                <input type="file" id="scan-out" required
+                                       accept="image/*">
+                                <input type="text"
+                                       class="sign__input file__upload"
+                                       placeholder="Перенсите файл сюда"
+                                       readonly >
+
+
+                                <button type="button" class="file__icon">
+                                    <svg width="16" height="16"
+                                         viewBox="0 0 16 16" fill="none"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                        <g clip-path="url(#clip0)">
+                                            <path d="M14.9367 2.69627C14.2499 2.00945 13.3368 1.63123 12.3655 1.63123C11.3942 1.63123 10.4811 2.00945 9.79427 2.69627L4.06223 8.42826C3.21159 9.2789 3.21159 10.663 4.06228 11.5137C4.91297 12.3644 6.29712 12.3643 7.14776 11.5136L10.9222 7.73922C11.2062 7.4552 11.2062 6.99476 10.9222 6.71074C10.6382 6.42672 10.1777 6.42672 9.89371 6.71074L6.11928 10.4852C5.83575 10.7688 5.37433 10.7688 5.09075 10.4852C4.80718 10.2016 4.80718 9.74022 5.09071 9.45669L10.8228 3.72479C11.2349 3.31273 11.7827 3.08578 12.3655 3.08578C12.9483 3.08578 13.4961 3.31273 13.9082 3.72479C14.7588 4.57548 14.7589 5.95959 13.9083 6.81028L7.66202 13.0564C6.24417 14.4741 3.93729 14.4741 2.51958 13.0564C1.83277 12.3696 1.4545 11.4565 1.4545 10.4852C1.4545 9.51395 1.83277 8.60077 2.51958 7.91395L8.7657 1.66774C9.04971 1.38373 9.04971 0.923279 8.7657 0.639263C8.48173 0.355296 8.02124 0.355247 7.73722 0.639263L1.49111 6.88547C0.529535 7.847 0 9.12541 0 10.4852C0 11.845 0.529535 13.1234 1.49111 14.0849C2.48366 15.0775 3.78699 15.5737 5.09075 15.5735C6.39423 15.5735 7.69814 15.0772 8.6905 14.0849L14.9368 7.83871C16.3545 6.42091 16.3544 4.11407 14.9367 2.69627Z"
+                                                  fill="#1D1D1D"/>
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0">
+                                                <rect width="16" height="16"
+                                                      fill="white"/>
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="scan-in" class="sign__label">
+                                Скан паспорта (Внутреняя часть)
+                            </label>
+                            <div class="file__input-wrap">
+                                <input type="file" id="scan-in" required
+                                       accept="image/*">
+                                <input type="text"
+                                       class="sign__input file__upload"
+                                       placeholder="Перенсите файл сюда"
+                                       readonly value="">
+
+
+                                <button type="button" class="file__icon">
+                                    <svg width="16" height="16"
+                                         viewBox="0 0 16 16" fill="none"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                        <g clip-path="url(#clip0)">
+                                            <path d="M14.9367 2.69627C14.2499 2.00945 13.3368 1.63123 12.3655 1.63123C11.3942 1.63123 10.4811 2.00945 9.79427 2.69627L4.06223 8.42826C3.21159 9.2789 3.21159 10.663 4.06228 11.5137C4.91297 12.3644 6.29712 12.3643 7.14776 11.5136L10.9222 7.73922C11.2062 7.4552 11.2062 6.99476 10.9222 6.71074C10.6382 6.42672 10.1777 6.42672 9.89371 6.71074L6.11928 10.4852C5.83575 10.7688 5.37433 10.7688 5.09075 10.4852C4.80718 10.2016 4.80718 9.74022 5.09071 9.45669L10.8228 3.72479C11.2349 3.31273 11.7827 3.08578 12.3655 3.08578C12.9483 3.08578 13.4961 3.31273 13.9082 3.72479C14.7588 4.57548 14.7589 5.95959 13.9083 6.81028L7.66202 13.0564C6.24417 14.4741 3.93729 14.4741 2.51958 13.0564C1.83277 12.3696 1.4545 11.4565 1.4545 10.4852C1.4545 9.51395 1.83277 8.60077 2.51958 7.91395L8.7657 1.66774C9.04971 1.38373 9.04971 0.923279 8.7657 0.639263C8.48173 0.355296 8.02124 0.355247 7.73722 0.639263L1.49111 6.88547C0.529535 7.847 0 9.12541 0 10.4852C0 11.845 0.529535 13.1234 1.49111 14.0849C2.48366 15.0775 3.78699 15.5737 5.09075 15.5735C6.39423 15.5735 7.69814 15.0772 8.6905 14.0849L14.9368 7.83871C16.3545 6.42091 16.3544 4.11407 14.9367 2.69627Z"
+                                                  fill="#1D1D1D"/>
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0">
+                                                <rect width="16" height="16"
+                                                      fill="white"/>
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+
+                         <button type="submit" class="personal__btn modal__btn" id="edit">
+                            Сохранить изменения
+                        </button>
+                    </div>
+                </form>
+            </div>
+            </div>
+            {#                                    модалка профиль изменен#}
+
+            <div class="modal micromodal-slide" id="edit-profile-success"
+             aria-hidden="true">
+            <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+                <div class="modal__container" role="dialog" aria-modal="true">
+                    <div class="area__modal">
+                        <div class="modal__close" data-micromodal-close></div>
+                        <div class="modal__inner">
+                            <img
+
+                                    src="{% static 'img/png/edit-profile.png' %}"
+                                 alt="">
+                            <p class="success__text">
+                                Ваш профиль успешно
+                                изменен!
+                            </p>
+
+                            <button type="submit" class="personal__btn modal__btn"
+                                    data-micromodal-close>
+                                Хорошо
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        </div>
+
+
+{% endblock %}
+
+
+{% block scripts %}
+    <script>
+    document.querySelector('#edit-profile-form').addEventListener('submit',(e) => {
+    e.preventDefault();
+    const formData = Object.fromEntries(new FormData(e.target).entries());
+    console.log(formData,'asd')
+     MicroModal.show('edit-profile-success');
+    })
+
+<!--$('#edit').on('click', function (){sign__input-->
+<!--    if(!inp.value()){-->
+<!--        alert("Заполните все поля")-->
+<!--        return-->
+<!--    }else{-->
+
+<!--    }-->
+
+
+<!--        $.ajax({-->
+<!--            method:"GET",-->
+<!--            dataType: "json",-->
+<!--            data: data,-->
+<!--            success: function(data){-->
+<!--                -->
+<!--            }-->
+<!--        })-->
+    })
+
+
+
+
+
+
+
+
+
+    </script>
+{% endblock %}
+
+

@@ -1,11 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <p>Ваш аккаунт успешно активирован! Вы может <a href="{% url 'login' %}">войти на сайт</a></p>
-</body>
-</html>
+{% block title_page %}{% endblock %}
+
+{% block style-libs %}{% endblock %}
+
+{% block style %}{% endblock %}
+
+{% block content %}
+
+    <div class="gray__body">
+        <div class="container">
+            <div class="faq__wrap">
+                <div class="shop__wrap">
+                    <div class="shop__head">
+                        <h2 class="shop__title">
+                                Ваш аккаунт успешно активирован!
+                        </h2>
+                        <div class="shop__filter">
+                            <a href="" class="filter__item">
+                                Новости
+                            </a>
+                            <a href="#" class="filter__item">
+                                Магазины
+                            </a>
+                            <a href="#" class="filter__item">
+                                Склады
+                            </a>
+                            <a href="#" class="filter__item">
+                                Как правильно заказывать?
+                            </a>
+                        </div>
+                    </div>
+
+                        <div class="grid__item">
+                            <div class="shop__img">
+                                <img src="{% static 'img/png/delivery.png' %}" alt="">
+                            </div>
+                            <div class="grid__item-info">
+                                <div class="shop__item-head">
+                                    <div class="shop__item-img">
+                                        <img src="{% static 'img/png/nike.png' %}" alt="">
+                                    </div>
+                                    <h5 class="shop__item-ttl">
+                                        Apple
+                                    </h5>
+                                </div>
+                                <p class="shop__item-text">
+                                    Apple — американская корпорация, производитель персональных и планшетных
+                                    компьютеров,
+                                    аудиоплееров, смартфонов
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}

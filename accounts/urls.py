@@ -3,7 +3,7 @@ from django.urls import path
 
 from accounts import views
 from accounts.views import RegisterViews, SignView, SuccessfulRegistrationView, \
-                              ForgotPasswordView
+   ForgotPasswordView, art
 
 urlpatterns = [
    path('register/', RegisterViews.as_view(), name='register'),
@@ -13,6 +13,7 @@ urlpatterns = [
 
    path('forgot_password/', ForgotPasswordView.as_view(), name='forgot-password'),
    path('reset/<int:pk>/<str:token>/', views.reset, name='reset'),
+   path('art/', views.art.as_view(), name='art'),
 
    path('logout/', LogoutView.as_view(next_page='home'), name='logout'),
 
