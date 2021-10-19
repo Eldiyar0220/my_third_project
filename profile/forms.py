@@ -5,7 +5,6 @@ from django.core.validators import RegexValidator
 User = get_user_model()
 
 class UserEditForm(forms.ModelForm):
-    email = forms.EmailField(widget=forms.TextInput(attrs={ 'class': 'sign__input', 'placeholder': 'Email или ваша почта!' }))
     username = forms.CharField(widget=forms.TextInput(attrs={ 'class': 'sign__input', 'placeholder': 'имя' }))
     last_name = forms.CharField(widget=forms.TextInput(attrs={ 'class': 'sign__input', 'placeholder': 'Фамилия' }))
     before_last_name = forms.CharField(widget=forms.TextInput(attrs={ 'class': 'sign__input', 'placeholder': 'Отчество' }))
@@ -46,7 +45,7 @@ class UserEditForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = [ 'username', 'email', 'last_name', 'before_last_name', 'address_living', 'city', 'number_of_address', 'postal_code' ,'phone_number', 'telegram']
+        fields = [ 'username',  'last_name', 'before_last_name', 'address_living', 'city', 'number_of_address', 'postal_code' ,'phone_number', 'telegram']
 
     # def clean_email(self):
     #     email = self.cleaned_data.get('email')

@@ -26,7 +26,8 @@
                            <label for="sign-email" class="sign__label">
                                 Ваш электронный адрес
                             </label>
-                            <span>{{ edit.email }}</span>
+                                <input type="text" id="email"
+                                   placeholder="Ваш электронный адрес" value="{{ user.email }}" required>
                         <div>
                             {% for key in edit.errors.email %}
                                    <p class="email__error">
@@ -119,7 +120,7 @@
 
                          <div class="fields {% if edit.phone_number.errors %}error{% endif %}">
                             <label for="postcode" class="sign__label">
-                                Номер телефона*
+                                Телефон номер
                             </label>
                              {{ edit.phone_number }}
                              {% for error in edit.phone_number.errors %}

@@ -67,3 +67,7 @@ class User(AbstractBaseUser):
 
     def has_perm(self, perm, obj=None):
         return self.is_staff
+
+
+
+# TODO do not forget about Скан паспорт
