@@ -20,7 +20,6 @@ def parcels(request):
 #     fields = ['recipient']
 #     template_name = 'pages/parcels.html'
 #     success_url = ('home')
-
 def ChangeProfileView(request):
     if request.method == 'POST':
         edit = OrderUpdateForm(request.POST, request.FILES, instance=request.user)
@@ -31,3 +30,7 @@ def ChangeProfileView(request):
     else:
         edit = OrderUpdateForm(instance=request.user)
     return render(request, 'pages/s.html', { 'edit': edit })
+
+def register(request):
+    if request.method == 'POST':
+        form =  userFprm(request.post)

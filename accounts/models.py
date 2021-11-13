@@ -54,7 +54,7 @@ class User(AbstractBaseUser):
     REQUIRED_FIELDS = ['username']
 
     def __str__(self):
-        return f'{self.email}'
+        return f'email:{self.email}'
 
     def create_activation_code(self):
         from django.utils.crypto import get_random_string

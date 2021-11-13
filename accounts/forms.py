@@ -1,10 +1,11 @@
 from django import forms
-from django.contrib.auth import get_user, get_user_model, login, authenticate
+from django.contrib.auth import get_user_model, authenticate
 from django.contrib.auth.hashers import check_password
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.password_validation import validate_password
 from django.core.mail import send_mail
 from django.core.validators import RegexValidator
+
 from django.http import HttpResponseRedirect
 from django.shortcuts import redirect
 from django.template import context
@@ -80,21 +81,12 @@ class UserRegistrationForm(forms.ModelForm):
             raise forms.ValidationError('Пароли не совпа')
         return self.cleaned_data
 
-
-    # def clean(self):
-    #     data = self.cleaned_data
-    #     if data['password'] != data['password_confirm']:
-    #         raise forms.ValidationError('Пароли не совпадают!!')
-    #     password = data['password']
-    #     if validate_password(password):
-    #         raise forms.ValidationError('Пароли не совпа')
-    #     return self.cleaned_data
-
     def save(self):
         user = User.objects.create(**self.cleaned_data)
         user.create_activation_code()
         send_activation_mail(user.email, user.activation_code)
         return user
+
 
 
 class SignForm(forms.Form):
@@ -120,12 +112,12 @@ class SignForm(forms.Form):
         return password
 
     def get_user(self):
-        from django.contrib.auth import authenticate
         return authenticate(
-            email=self.cleaned_data.get('email'),
-            password=self.cleaned_data.get('password'))
+            email = self.cleaned_data.get('email'),
+            password = self.cleaned_data.get('password')
+        )
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self,*args, **kwargs):
         self.request = kwargs.pop('request', None)
         super().__init__(*args, **kwargs)
 

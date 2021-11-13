@@ -32,6 +32,7 @@ class UserEditForm(forms.ModelForm):
         regex="(996)",
         message=phone_message
     )
+
     phone_number = forms.CharField(validators=[phone_regex], widget=forms.TextInput(
         attrs={ 'class': 'sign__input', 'placeholder': 'Ваш номер телефона' }))
 

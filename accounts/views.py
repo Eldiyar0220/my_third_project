@@ -19,6 +19,7 @@ class RegisterViews(CreateView):
     model = User
     template_name = 'pages/registration.html'
     form_class = UserRegistrationForm
+
     success_url = reverse_lazy('success_registration')
 
 class SuccessfulRegistrationView(TemplateView):
@@ -46,6 +47,7 @@ class SignView(LoginView):
     template_name = 'pages/sign.html'
     form_class = SignForm
     success_url = reverse_lazy('home')
+
 
 class ForgotPasswordView(View):
     @staticmethod
@@ -80,6 +82,47 @@ def reset(request, pk, token):
         return HttpResponseRedirect(reverse('login'))
     return render(request, 'pages/404.html')
 
+# def sign(request):
+#     if request.method == "POST":
+#         form = UserRegistrationForm(data=request.POST)
+#         if form.is_valid():
+#             email = form.cleaned_data.get('email')
+#             password = form.cleaned_data.get('password')
+#             user = authenticate(username=email, password=password)
+#             login(request, user)
+#             return redirect('home')
+#         return render(request, 'html', {'form':form})
+
+# smart = SignForm()
+# print(1, smart)
+#
+# def sign(request):
+#     if request.method == 'POST':
+#         form = SignForm(request.POST)
+#         print(form)
+#         if form.is_valid():
+#             email = form.cleaned_data.get('email')
+#             password = form.cleaned_data.get('password')
+#             user = authenticate(username=email, password=password)
+#             login(request, user)
+#             return redirect('home')
+#     else:
+#         form = SignForm()
+#     return render(request, 'pages/sign.html', {'form':form})
+
+# def sign(request):
+#     if request.method == 'POST':
+#         form = SignForm(data=request.POST)
+#         print(form)
+#         if form.is_valid():
+#             email = form.cleaned_data.get('email')
+#             password = form.cleaned_data.get('password')
+#             user = authenticate(username=email, password=password)
+#             login(request, user)
+#             return redirect('home')
+#     else:
+#         form = SignForm()
+#     return render(request, 'pages/sign.html', {'form': form})
 
 
 
