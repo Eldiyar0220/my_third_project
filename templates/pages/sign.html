@@ -40,13 +40,13 @@
 <!--                               placeholder="Email или ваша почта">-->
                         {{ form.email }}
 
-<div>
-     {% for value in form.errors.email %}
-        <p class="email__error">
-                       {{ value }}
-         </p>
-    {% endfor %}
-</div>
+                        <div>
+                             {% for value in form.errors.email %}
+                                <p class="email__error">
+                                               {{ value }}
+                                 </p>
+                            {% endfor %}
+                        </div>
                     </div>
                     <div class="fields {% if form.password.errors %}error{% endif %}">
 {#                        Если пароль неправильный, добавить класс "error" на fields#}
