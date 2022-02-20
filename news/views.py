@@ -6,3 +6,6 @@ from django.views.generic import TemplateView
 
 class MainPageView(TemplateView):
     template_name = 'pages/index.html'
+
+class ShopPageView(TemplateView):
+    template_name = 'pages/shop.html'

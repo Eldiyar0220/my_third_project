@@ -68,7 +68,7 @@ class UserRegistrationForm(forms.ModelForm):
     def clean_email(self):
         email = self.cleaned_data.get('email')
         if User.objects.filter(email=email):
-            raise forms.ValidationError('Такой аккаунт уже Существует')
+            raise forms.ValidationError('Такой аккаунт Существует')
         return email
 
     def clean(self):
@@ -87,28 +87,26 @@ class UserRegistrationForm(forms.ModelForm):
         send_activation_mail(user.email, user.activation_code)
         return user
 
-
-
 class SignForm(forms.Form):
     email = forms.EmailField(widget=forms.TextInput(attrs={ 'class': 'sign__input', 'placeholder': 'Email или ваша почта' }))
     password = forms.CharField(min_length=8,widget=forms.PasswordInput(attrs={ 'class': 'sign__input', 'placeholder': 'Пароль!!' }))
 
+
     def clean_email(self):
-        data = self.cleaned_data
-        email = data['email']
+        email = self.cleaned_data.get('email')
         if email:
             qs = User.objects.filter(email=email)
             if not qs.exists():
-                raise forms.ValidationError('Email не найден попробуйте снова')
+                raise forms.ValidationError('такой аккаунт уже не существует')
         return email
 
     def clean_password(self):
-        password = self.cleaned_data.get('password')
         email = self.cleaned_data.get('email')
-        if password and email:
+        password = self.cleaned_data.get('password')
+        if email and password:
             qs = User.objects.filter(email=email)[0]
             if not check_password(password, qs.password):
-                raise forms.ValidationError('Неверный пароль')
+                raise forms.ValidationError('неверный пароль')
         return password
 
     def get_user(self):
@@ -117,11 +115,9 @@ class SignForm(forms.Form):
             password = self.cleaned_data.get('password')
         )
 
-    def __init__(self,*args, **kwargs):
+    def __init__(self, *args, **kwargs):
         self.request = kwargs.pop('request', None)
         super().__init__(*args, **kwargs)
-
-
 
 class ResetForm(forms.Form):
 
